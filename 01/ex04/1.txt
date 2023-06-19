@@ -1,0 +1,14 @@
+1.txt
+Makefile
+Output
+incl
+objs
+sed
+srcs
+1.txt
+Makefile
+incl
+objs
+output
+sed
+srcs
