@@ -1,6 +1,6 @@
 #pragma once
 #ifndef __DIAMONDTRAP_HPP__
-# define ___DIAMONDTRAP_HPP__
+# define __DIAMONDTRAP_HPP__
 
 #include <iostream>
 #include "ClapTrap.hpp"

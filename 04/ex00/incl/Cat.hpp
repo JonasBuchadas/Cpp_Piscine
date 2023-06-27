@@ -13,8 +13,10 @@ protected:
 	std::string type;
 public:
 	Cat();
-	~Cat();
-	void makeSound();
+	virtual ~Cat();
+  Cat(const Cat &c);
+  Cat &operator=(const Cat &c);
+	virtual void makeSound();
 	std::string getType();
 };
 

@@ -13,8 +13,8 @@ protected:
 	std::string type;
 public:
 	Dog();
-	~Dog();
-	void makeSound();
+	virtual ~Dog();
+	virtual void makeSound();
 	std::string getType();
 };
 

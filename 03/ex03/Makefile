@@ -6,7 +6,7 @@ NAME=		ClapTrap
 
 ### COMPILATION ###
 CC=			g++
-CFLAGS=		-Wall -Werror -Wextra -g -std=c++98 -fsanitize=address -Wshadow
+CFLAGS=		-Wall -Werror -Wextra -g -std=c++98 -fsanitize=address -Wshadow -Wno-shadow
 
 ### PATHS ###
 INCL_PATH=	incl/

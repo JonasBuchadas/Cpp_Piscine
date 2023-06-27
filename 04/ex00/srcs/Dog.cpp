@@ -2,12 +2,12 @@
 
 Dog::Dog() : type("Dog")
 {
-	std::cout << "Dog default constructor called" << std::endl;
+	std::cout << this->type << " default constructor called" << std::endl;
 }
 
 Dog::~Dog()
 {
-	std::cout << "Dog default destructor called" << std::endl;
+	std::cout << this->type << " default destructor called" << std::endl;
 }
 
 std::string Dog::getType()
