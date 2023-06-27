@@ -14,8 +14,9 @@ protected:
 public:
 	Dog();
 	virtual ~Dog();
-	virtual void makeSound();
-	std::string getType();
+  Dog(const Dog &d);
+  Dog &operator=(const Dog &d);
+	virtual void makeSound() const;
 };
 
 #endif

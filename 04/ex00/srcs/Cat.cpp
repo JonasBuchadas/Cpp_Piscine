@@ -23,12 +23,7 @@ Cat::~Cat()
 	std::cout << this->type << " default destructor called" << std::endl;
 }
 
-std::string Cat::getType()
-{
-	return type;
-}
-
-void Cat::makeSound()
+void Cat::makeSound() const
 {
 	std::cout << "Meow" << std::endl;
 }
