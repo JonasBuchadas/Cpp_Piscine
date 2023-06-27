@@ -1,21 +1,21 @@
-#include "Animal.hpp"
+#include "WrongAnimal.hpp"
 
-Animal::Animal() : type("Animal")
+WrongAnimal::WrongAnimal() : type("WrongAnimal")
 {
 	std::cout << this->type << " default constructor called" << std::endl;
 }
 
-Animal::~Animal()
+WrongAnimal::~WrongAnimal()
 {
 	std::cout << this->type << " default destructor called" << std::endl;
 }
 
-std::string Animal::getType() const
+std::string WrongAnimal::getType() const
 {
 	return type;
 }
 
-void Animal::makeSound() const
+void WrongAnimal::makeSound() const
 {
 	std::cout << this->type << " makes a generic sound" << std::endl;
 }

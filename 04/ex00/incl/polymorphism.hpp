@@ -1,9 +1,9 @@
-#ifndef __POLYMORPHISM_HPP__
-# define __POLYMORPHISM_HPP__
+#pragma once
 
 #include <iostream>
 #include "Animal.hpp"
 #include "Dog.hpp"
 #include "Cat.hpp"
+#include "WrongAnimal.hpp"
+#include "WrongCat.hpp"
 
-#endif

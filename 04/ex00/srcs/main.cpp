@@ -10,8 +10,16 @@ int main (void)
 	i->makeSound(); // will output the cat sound!
 	j->makeSound();
 	meta->makeSound();
+  
+  const WrongAnimal *wrongMeta = new WrongAnimal();
+  const WrongAnimal *k = new WrongCat();
+	std::cout << k->getType() << " " << std::endl;
+	k->makeSound();
+	wrongMeta->makeSound();
 	delete meta;
+  delete wrongMeta;
 	delete i;
 	delete j;
+  delete k;
 	return 0;
 }

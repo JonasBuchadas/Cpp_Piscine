@@ -17,7 +17,9 @@ OBJS_PATH=	objs/
 SRC_NAME=	main.cpp
 SRCS=		Animal.cpp \
 			Cat.cpp \
-			Dog.cpp
+			Dog.cpp \
+			WrongAnimal.cpp \
+			WrongCat.cpp
 SRCS_NAME=	$(addprefix $(SRCS_PATH), $(SRC_NAME) $(SRCS))
 ### OBJECT FILES ###
 OBJ_NAME=	$(SRC_NAME:.cpp=.o)

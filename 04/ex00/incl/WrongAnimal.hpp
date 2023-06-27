@@ -2,16 +2,16 @@
 
 #include <iostream>
 
-class Animal
+class WrongAnimal
 {
 private:
 
 protected:
 	std::string type;
 public:
-	Animal();
-	virtual ~Animal();
-	virtual void makeSound() const;
+	WrongAnimal();
+	~WrongAnimal();
+	void makeSound() const;
 	std::string getType() const;
 };
 

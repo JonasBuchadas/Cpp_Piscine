@@ -1,16 +1,16 @@
-#include "Cat.hpp"
+#include "WrongCat.hpp"
 
-Cat::Cat() : type("Cat")
+WrongCat::WrongCat() : type("WrongCat")
 {
 	std::cout << this->type << " default constructor called" << std::endl;
 }
 
-Cat::~Cat()
+WrongCat::~WrongCat()
 {
 	std::cout << this->type << " default destructor called" << std::endl;
 }
 
-void Cat::makeSound() const
+void WrongCat::makeSound() const
 {
 	std::cout << "Meow" << std::endl;
 }
