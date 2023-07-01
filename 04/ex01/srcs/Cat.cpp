@@ -6,10 +6,34 @@ Cat::Cat() : type("Cat")
 	this->brain = new Brain();
 }
 
+Cat::Cat(const Cat &c) : Animal()
+{
+	*this = c;
+	std::cout << this->type << " copy destructor called" << std::endl;
+}
+
+Cat &Cat::operator=(const Cat &c)
+{
+	this->type = c.type;
+	*(this->brain) = *c.brain;
+	std::cout << this->type << " = operator overload called" << std::endl;
+	return *this;
+}
+
 Cat::~Cat()
 {
 	std::cout << this->type << " default destructor called" << std::endl;
 	delete this->brain;
+}
+
+Brain& Cat::getBrain()
+{
+	return *this->brain;
+}
+
+void Cat::setBrain(Brain &b)
+{
+	*(this->brain) = b;
 }
 
 void Cat::makeSound() const

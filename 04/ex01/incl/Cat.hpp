@@ -12,7 +12,14 @@ protected:
 	std::string type;
 public:
 	Cat();
+	Cat(const Cat& c);
 	virtual ~Cat();
+
+	Cat& operator=(const Cat &c);
+
+	Brain& getBrain();
+	void setBrain(Brain &b);
+
 	virtual void makeSound() const;
 };
 

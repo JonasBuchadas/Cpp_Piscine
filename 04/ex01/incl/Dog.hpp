@@ -12,7 +12,13 @@ protected:
 	std::string type;
 public:
 	Dog();
+	Dog(const Dog& d);
 	virtual ~Dog();
+
+	Dog& operator=(const Dog &c);
+
+	Brain& getBrain();
+
 	virtual void makeSound() const;
 };
 
