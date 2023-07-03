@@ -3,18 +3,19 @@
 int main (void)
 {
 	// const Animal* animals[SIZE];
-	const Animal* d = new Dog();
+	const Dog* d = new Dog();
 	const Animal* c = new Cat();
+	const Animal* d1 = new Dog (*d);
 
 	delete d;
+	delete d1;
+
 	delete c;
 
-	
- 	Brain* b1 = new Brain();
-	b1->insertIdea("smart");
+	const Brain* b1 = new Brain();
 	const Brain* b2 = new Brain(*b1);
-	b2->showIdea(0);
 
+	std::cout << b2->ideas[0] << std::endl;
 	delete b1;
 	delete b2;
 /*

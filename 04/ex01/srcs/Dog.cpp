@@ -8,14 +8,18 @@ Dog::Dog() : type("Dog")
 
 Dog::Dog(const Dog &d) : Animal()
 {
-	*this = d;
-	std::cout << this->type << " copy destructor called" << std::endl;
+	this->type = d.type;
+	if (d.brain)
+		this->brain = new Brain(*d.brain);
+	std::cout << this->type << " copy constructor called" << std::endl;
 }
 
 Dog &Dog::operator=(const Dog &d)
 {
+	if (this == &d)
+        return *this;
 	this->type = d.type;
-	*(this->brain) = *d.brain;
+	this->brain = d.brain;
 	std::cout << this->type << " = operator overload called" << std::endl;
 	return *this;
 }

@@ -8,8 +8,9 @@ Cat::Cat() : type("Cat")
 
 Cat::Cat(const Cat &c) : Animal()
 {
-	*this = c;
-	std::cout << this->type << " copy destructor called" << std::endl;
+	this->type = c.type;
+	this->brain = c.brain;
+	std::cout << this->type << " copy constructor called" << std::endl;
 }
 
 Cat &Cat::operator=(const Cat &c)

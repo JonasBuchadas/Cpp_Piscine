@@ -5,15 +5,14 @@
 class Brain
 {
 private:
-	std::string	ideas[100];
 protected:
 public:
+	std::string	ideas[100];
+
 	Brain();
 	Brain(const Brain& b);
 	~Brain();
-	Brain& operator=(const Brain& a);
-	
-	void insertIdea(std::string idea);
-	void showIdea(int i) const;
+	Brain& operator=(const Brain& b);
+
 };
 

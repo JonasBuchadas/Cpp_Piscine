@@ -7,8 +7,8 @@ Brain::Brain()
 
 Brain::Brain(const Brain& b)
 {
-	*this = b;
 	std::cout << "Brain copy constructor called" << std::endl;
+	*this = b;
 }
 
 Brain::~Brain()
@@ -19,22 +19,9 @@ Brain::~Brain()
 Brain& Brain::operator=(const Brain& b)
 {
 	std::cout << "Brain = overload operator called" << std::endl;
+	if (this == &b)
+		return *this;
 	for (unsigned int i = 0; i < 100; i++)
 		this->ideas[i] = b.ideas[i];
 	return *this;
-}
-
-void Brain::insertIdea(std::string idea)
-{
-	int i = 0;
-	while (this->ideas[i] != "")
-		i++;
-	this->ideas[i] = idea;
-}
-
-void Brain::showIdea(int i) const
-{
-	if (i < 0 || i >= 100)
-		std::cout << "Idea not accesible";
-	std::cout << "Idea " << i << " is " << ideas[i] << std::endl;
 }
