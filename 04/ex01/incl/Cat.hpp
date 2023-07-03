@@ -17,8 +17,8 @@ public:
 
 	Cat& operator=(const Cat &c);
 
+	std::string getType();
 	Brain& getBrain();
-	void setBrain(Brain &b);
 
 	virtual void makeSound() const;
 };

@@ -17,6 +17,7 @@ public:
 
 	Dog& operator=(const Dog &c);
 
+	std::string getType();
 	Brain& getBrain();
 
 	virtual void makeSound() const;

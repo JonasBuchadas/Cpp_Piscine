@@ -16,11 +16,11 @@ Dog::Dog(const Dog &d) : Animal()
 
 Dog &Dog::operator=(const Dog &d)
 {
+	std::cout << this->type << " = operator overload called" << std::endl;
 	if (this == &d)
         return *this;
 	this->type = d.type;
 	this->brain = d.brain;
-	std::cout << this->type << " = operator overload called" << std::endl;
 	return *this;
 }
 
@@ -28,6 +28,11 @@ Dog::~Dog()
 {
 	std::cout << this->type << " default destructor called" << std::endl;
 	delete this->brain;
+}
+
+std::string Dog::getType()
+{
+	return this->type;
 }
 
 Brain& Dog::getBrain()
