@@ -6,6 +6,8 @@
 
 class Ice : public AMateria
 {
+	private:
+		static const std::string _type;
 	public:
 		Ice();
 		Ice(const Ice &i);
@@ -13,6 +15,8 @@ class Ice : public AMateria
 
 		Ice& operator=(const Ice& i);
 
-		virtual AMateria* clone();
+		virtual AMateria* clone() const;
 		virtual void use(ICharacter& target);
 };
+
+// const std::string Ice::_type = "ice";

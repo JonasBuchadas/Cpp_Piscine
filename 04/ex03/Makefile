@@ -2,7 +2,7 @@
 OS=			$(shell uname -s)
 
 ### EXECUTABLE ###
-NAME=		Animals
+NAME=		Recap
 
 ### COMPILATION ###
 CC=			g++
@@ -15,14 +15,9 @@ OBJS_PATH=	objs/
 
 ### SOURCE FILES ###
 SRC_NAME=	main.cpp
-SRCS=		Ice.cpp \
-			AMateria.cpp \
-			Animal.cpp \
-			Cat.cpp \
-			Dog.cpp \
-			WrongAnimal.cpp \
-			WrongCat.cpp \
-			Brain.cpp
+SRCS=		Character.cpp \
+			Ice.cpp \
+			AMateria.cpp
 SRCS_NAME=	$(addprefix $(SRCS_PATH), $(SRC_NAME) $(SRCS))
 ### OBJECT FILES ###
 OBJ_NAME=	$(SRC_NAME:.cpp=.o)

@@ -1,6 +1,8 @@
 #include <Ice.hpp>
 
-Ice::Ice() : AMateria("ice")
+const std::string Ice::_type = "ice";
+
+Ice::Ice() : AMateria(_type)
 {
 	std::cout << "Ice default constructor called" << std::endl;
 }
@@ -18,11 +20,12 @@ Ice::Ice(const Ice &i) : AMateria("ice")
 
 Ice&   Ice::operator=(const Ice& i) {
     if (this != &i)
-        this->type = i.type;
+		this->operator=(i);
+	std::cout << this->type << " equal operator overload called" << std::endl;
     return *this;
 }
 
-AMateria *Ice::clone()
+AMateria *Ice::clone() const
 {
 	return (new Ice(*this));
 }
@@ -30,4 +33,5 @@ AMateria *Ice::clone()
 void Ice::use(ICharacter &target)
 {
 	std::cout << "* shoots an ice bolt at " << target.getName() << " *" << std::endl;
+	AMateria::use(target);
 }

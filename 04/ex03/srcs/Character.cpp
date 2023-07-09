@@ -1,0 +1,79 @@
+#include <Character.hpp>
+
+Character::Character(std::string name) : name(name)
+{
+	for (int i = 0; i < inventory_size; i++)
+		this->inventory[i] = NULL;
+	std::cout << "Character with name: " << this->name << " default constructor called" << std::endl;
+}
+
+Character::Character(const Character &src)
+{
+	this->name = src.name;
+	std::cout << "Character with name: " << this->name << " copy constructor called" << std::endl;
+}
+
+Character::~Character()
+{
+	std::cout << "Character with name: " << this->name << " destructor constructor called" << std::endl;
+}
+
+Character& Character::operator=(const Character& src)
+{
+	std::cout << "Character = operator overload called" << std::endl;
+	if (this == &src)
+        return *this;
+	this->name = src.name;
+	return *this;
+}
+
+std::string const &Character::getName() const
+{
+	return this->name;
+}
+
+void Character::equip(AMateria* m)
+{
+	for (int i = 0; i < inventory_size; i++)
+	{
+		if (inventory[i] == NULL)
+		{
+			inventory[i] = m;
+			std::cout << "Character " << this->name << " equiped " << m->getType() << " on slot " << i + 1 << std::endl;
+			return ;
+		}
+	}
+	std::cout << "Character " << this->name << " has all inventory slots filled." << std::endl;
+}
+
+void Character::unequip(int idx)
+{
+	if (idx < 0 || idx > inventory_size)
+	{
+		std::cout << "Inventory has only " << inventory_size << " slots" << std::endl;
+		return ;
+	}
+	if (this->inventory[idx] == NULL)
+	{
+		std::cout << "Nothing to use in this inventory slot" << std::endl;
+		return ;
+	}
+	std::cout << "Removed " << this->inventory[idx]->getType() << " from inventory." << std::endl;
+	this->inventory[idx] = NULL;
+}
+
+void Character::use(int idx, ICharacter& target)
+{
+	if (idx < 0 || idx > inventory_size)
+	{
+		std::cout << "Inventory has only " << inventory_size << " slots" << std::endl;
+		return ;
+	}
+	if (this->inventory[idx] == NULL)
+	{
+		std::cout << "Nothing to use in this inventory slot" << std::endl;
+		return ;
+	}
+	this->inventory[idx]->use(target);
+	// std::cout << "Character " << this->name << " used " << this->inventory[idx]->getType() << " on character " << target.getName() << std::endl;
+}
