@@ -48,32 +48,33 @@ void Character::equip(AMateria* m)
 
 void Character::unequip(int idx)
 {
-	if (idx < 0 || idx > inventory_size)
+	if (idx < 1 || idx >= inventory_size)
 	{
 		std::cout << "Inventory has only " << inventory_size << " slots" << std::endl;
 		return ;
 	}
-	if (this->inventory[idx] == NULL)
+	int i = idx - 1;
+	if (this->inventory[i] == NULL)
 	{
-		std::cout << "Nothing to use in this inventory slot" << std::endl;
+		std::cout << "Nothing to unequip in this inventory slot" << std::endl;
 		return ;
 	}
-	std::cout << "Removed " << this->inventory[idx]->getType() << " from inventory." << std::endl;
-	this->inventory[idx] = NULL;
+	std::cout << "Removed " << this->inventory[i]->getType() << " from inventory." << std::endl;
+	this->inventory[i] = NULL;
 }
 
 void Character::use(int idx, ICharacter& target)
 {
-	if (idx < 0 || idx > inventory_size)
+	if (idx < 1 || idx >= inventory_size)
 	{
 		std::cout << "Inventory has only " << inventory_size << " slots" << std::endl;
 		return ;
 	}
-	if (this->inventory[idx] == NULL)
+	int i = idx - 1;
+	if (this->inventory[i] == NULL)
 	{
 		std::cout << "Nothing to use in this inventory slot" << std::endl;
 		return ;
 	}
-	this->inventory[idx]->use(target);
-	// std::cout << "Character " << this->name << " used " << this->inventory[idx]->getType() << " on character " << target.getName() << std::endl;
+	this->inventory[i]->use(target);
 }
