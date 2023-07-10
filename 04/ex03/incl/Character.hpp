@@ -9,6 +9,7 @@ private:
 	static const int inventory_size = 4;
 	std::string name;
 	AMateria *inventory[inventory_size];
+	void deleteAllEquippedMaterias();
 protected:
 public:
 	Character(std::string name);

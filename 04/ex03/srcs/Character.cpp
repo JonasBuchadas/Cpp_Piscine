@@ -9,20 +9,33 @@ Character::Character(std::string name) : name(name)
 
 Character::Character(const Character &src)
 {
+	for (int i = 0; i < inventory_size; i++)
+	{
+		this->inventory[i] = NULL;
+		if (src.inventory[i] != NULL)
+			this->inventory[i] = src.inventory[i]->clone();
+	}
 	this->name = src.name;
 	std::cout << "Character with name: " << this->name << " copy constructor called" << std::endl;
 }
 
 Character::~Character()
 {
+	deleteAllEquippedMaterias();
 	std::cout << "Character with name: " << this->name << " destructor constructor called" << std::endl;
 }
 
 Character& Character::operator=(const Character& src)
 {
-	std::cout << "Character = operator overload called" << std::endl;
+	std::cout << "Character copy operator overload called" << std::endl;
 	if (this == &src)
         return *this;
+	deleteAllEquippedMaterias();
+	for (int i = 0; i < inventory_size; i++)
+	{
+		if (src.inventory[i] != NULL)
+			this->inventory[i] = src.inventory[i]->clone();
+	}
 	this->name = src.name;
 	return *this;
 }
@@ -34,11 +47,17 @@ std::string const &Character::getName() const
 
 void Character::equip(AMateria* m)
 {
+	if (m->getEquipped())
+	{
+		std::cout << "Equipment " << m->getType() << " already equipped." << std::endl;
+		return ;
+	}
 	for (int i = 0; i < inventory_size; i++)
 	{
 		if (inventory[i] == NULL)
 		{
 			inventory[i] = m;
+			m->setEquipped(true);
 			std::cout << "Character " << this->name << " equiped " << m->getType() << " on slot " << i + 1 << std::endl;
 			return ;
 		}
@@ -59,8 +78,9 @@ void Character::unequip(int idx)
 		std::cout << "Nothing to unequip in this inventory slot" << std::endl;
 		return ;
 	}
-	std::cout << "Removed " << this->inventory[i]->getType() << " from inventory." << std::endl;
 	this->inventory[i] = NULL;
+	this->inventory[i]->setEquipped(false);
+	std::cout << "Removed " << this->inventory[i]->getType() << " from inventory." << std::endl;
 }
 
 void Character::use(int idx, ICharacter& target)
@@ -77,4 +97,15 @@ void Character::use(int idx, ICharacter& target)
 		return ;
 	}
 	this->inventory[i]->use(target);
+}
+
+void Character::deleteAllEquippedMaterias() {
+	for (int i = 0; i < inventory_size; i++)
+	{
+		if (inventory[i] != NULL)
+		{
+			delete inventory[i];
+			inventory[i] = NULL;
+		}
+	}
 }

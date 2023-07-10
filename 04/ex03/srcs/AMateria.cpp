@@ -2,6 +2,7 @@
 
 AMateria::AMateria(std::string const &type) : type(type)
 {
+	this->equipped = false;
 	std::cout << this->type << " default constructor called" << std::endl;
 }
 
@@ -13,6 +14,16 @@ AMateria::~AMateria()
 std::string const &AMateria::getType() const
 {
 	return this->type;
+}
+
+bool AMateria::getEquipped()
+{
+	return this->equipped;
+}
+
+void AMateria::setEquipped(bool equip)
+{
+	this->equipped = equip;
 }
 
 // AMateria& AMateria::operator=(const AMateria& src)

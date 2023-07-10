@@ -4,16 +4,16 @@
 #include <AMateria.hpp>
 #include <ICharacter.hpp>
 
-class Ice : public AMateria
+class Cure : public AMateria
 {
 	private:
 		static const std::string _type;
 	public:
-		Ice();
-		Ice(const Ice &i);
-		~Ice();
+		Cure();
+		Cure(const Cure &i);
+		~Cure();
 
-		Ice& operator=(const Ice& i);
+		Cure& operator=(const Cure& i);
 
 		virtual AMateria* clone() const;
 		virtual void use(ICharacter& target);
