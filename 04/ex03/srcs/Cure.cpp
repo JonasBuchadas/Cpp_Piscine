@@ -1,6 +1,6 @@
 #include <Cure.hpp>
 
-const std::string Cure::_type = "cure";
+std::string Cure::_type = "cure";
 
 Cure::Cure() : AMateria(_type)
 {
@@ -12,7 +12,7 @@ Cure::~Cure()
 	std::cout << "Cure default destructor called" << std::endl;
 }
 
-Cure::Cure(const Cure &i) : AMateria("Cure")
+Cure::Cure(const Cure &i) : AMateria(_type)
 {
 	*this = i;
 	std::cout << this->type << " copy constructor called" << std::endl;
@@ -20,7 +20,7 @@ Cure::Cure(const Cure &i) : AMateria("Cure")
 
 Cure&   Cure::operator=(const Cure& i) {
     if (this != &i)
-		this->operator=(i);
+		this->AMateria::operator=((AMateria&)i);
 	std::cout << this->type << " equal operator overload called" << std::endl;
     return *this;
 }

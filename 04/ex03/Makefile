@@ -17,6 +17,7 @@ OBJS_PATH=	objs/
 SRC_NAME=	main.cpp
 SRCS=		Character.cpp \
 			Ice.cpp \
+			Cure.cpp \
 			AMateria.cpp
 SRCS_NAME=	$(addprefix $(SRCS_PATH), $(SRC_NAME) $(SRCS))
 ### OBJECT FILES ###

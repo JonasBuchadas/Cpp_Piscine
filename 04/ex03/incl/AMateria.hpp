@@ -7,16 +7,21 @@ class ICharacter;
 
 class AMateria
 {
-	protected:
-		std::string const &type;
+	private:
+		int usages;
 		bool equipped;
+	protected:
+		std::string &type;
 	public:
 		// AMateria();
-		AMateria(std::string const & type);
-		// AMateria(const AMateria& src);
+		AMateria(std::string& type);
+		AMateria(AMateria& src);
 		virtual ~AMateria();
 
+		AMateria& operator=(AMateria& src);
+
 		std::string const & getType() const;
+		int getUsages();
 		bool getEquipped();
 		void setEquipped(bool equip);
 
