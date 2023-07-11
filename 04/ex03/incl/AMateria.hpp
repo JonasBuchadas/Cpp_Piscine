@@ -12,9 +12,11 @@ class AMateria
 		bool equipped;
 	public:
 		// AMateria();
-		AMateria(std::string const & type);
-		// AMateria(const AMateria& src);
+		AMateria(std::string& type);
+		AMateria(AMateria& src);
 		virtual ~AMateria();
+
+		AMateria& operator=(AMateria& src);
 
 		std::string const & getType() const;
 		bool getEquipped();
