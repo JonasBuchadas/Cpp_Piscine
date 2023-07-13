@@ -16,6 +16,7 @@ OBJS_PATH=	objs/
 ### SOURCE FILES ###
 SRC_NAME=	main.cpp
 SRCS=		Character.cpp \
+			MateriaSource.cpp \
 			Ice.cpp \
 			Cure.cpp \
 			AMateria.cpp
