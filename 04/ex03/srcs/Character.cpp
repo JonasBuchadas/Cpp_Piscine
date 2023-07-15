@@ -67,36 +67,34 @@ void Character::equip(AMateria* m)
 
 void Character::unequip(int idx)
 {
-	if (idx < 1 || idx >= inventory_size)
+	if (idx < 0 || idx > inventory_size)
 	{
 		std::cout << "Inventory has only " << inventory_size << " slots" << std::endl;
 		return ;
 	}
-	int i = idx - 1;
-	if (this->inventory[i] == NULL)
+	if (this->inventory[idx] == NULL)
 	{
 		std::cout << "Nothing to unequip in this inventory slot" << std::endl;
 		return ;
 	}
-	this->inventory[i] = NULL;
-	this->inventory[i]->setEquipped(false);
-	std::cout << "Removed " << this->inventory[i]->getType() << " from inventory." << std::endl;
+	this->inventory[idx] = NULL;
+	this->inventory[idx]->setEquipped(false);
+	std::cout << "Removed " << this->inventory[idx]->getType() << " from inventory." << std::endl;
 }
 
 void Character::use(int idx, ICharacter& target)
 {
-	if (idx < 1 || idx >= inventory_size)
+	if (idx < 0 || idx > inventory_size)
 	{
 		std::cout << "Inventory has only " << inventory_size << " slots" << std::endl;
 		return ;
 	}
-	int i = idx - 1;
-	if (this->inventory[i] == NULL)
+	if (this->inventory[idx] == NULL)
 	{
 		std::cout << "Nothing to use in this inventory slot" << std::endl;
 		return ;
 	}
-	this->inventory[i]->use(target);
+	this->inventory[idx]->use(target);
 }
 
 void Character::deleteAllEquippedMaterias() {
