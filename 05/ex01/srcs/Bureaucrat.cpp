@@ -43,6 +43,20 @@ void Bureaucrat::incrementGrade() throw(std::exception)
 	setGrade(--this->grade);
 }
 
+void Bureaucrat::signForm(Form &f)
+{
+	try
+	{
+		f.beSigned(*this);
+	}
+	catch (const std::exception &e)
+	{
+		std::cout << "Bureaucrat " << this->name << " couldn't sign form " << f.getName() << " because grade is lower." << std::endl;
+		return;
+	}
+	std::cout << "Bureaucrat " << this->name << " signed form " << f.getName() << std::endl;
+}
+
 std::ostream &operator<<(std::ostream &out, Bureaucrat &b)
 {
 	out << b.getName() << " bureaucrat grade " << b.getGrade() << "." << std::endl;
