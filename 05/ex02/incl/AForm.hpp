@@ -21,8 +21,8 @@ public:
 	bool isSigned();
 	std::string getName();
 	void beSigned(Bureaucrat &b) throw(std::exception);
-	void checkExecution(Bureaucrat &b) throw(std::exception);
-	virtual void execute(Bureaucrat const &executor) throw(std::exception) = 0;
+	void checkExecution(Bureaucrat const &b) const throw(std::exception);
+	virtual void execute(Bureaucrat const &executor) const throw(std::exception) = 0;
 
 	static int gradeControl(int grade) throw(std::exception);
 

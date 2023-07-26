@@ -14,6 +14,11 @@ int Bureaucrat::getGrade()
 	return this->grade;
 }
 
+int Bureaucrat::getGrade() const
+{
+	return this->grade;
+}
+
 std::string Bureaucrat::getName()
 {
 	return this->name;

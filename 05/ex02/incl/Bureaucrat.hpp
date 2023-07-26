@@ -16,6 +16,7 @@ public:
 
 	std::string getName();
 	int getGrade();
+	int getGrade() const;
 	void setGrade(int grade) throw(std::exception);
 
 	void incrementGrade() throw(std::exception);

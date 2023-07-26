@@ -36,7 +36,7 @@ void AForm::beSigned(Bureaucrat &b) throw (std::exception)
 	this->sign = true;
 }
 
-void AForm::checkExecution(Bureaucrat &b) const throw (std::exception)
+void AForm::checkExecution(Bureaucrat const &b) const throw (std::exception)
 {
 	if (b.getGrade() > this->gradeToExecute)
 		throw AForm::GradeTooLowException();

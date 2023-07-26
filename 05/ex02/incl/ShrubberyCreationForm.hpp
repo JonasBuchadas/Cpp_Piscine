@@ -4,9 +4,9 @@
 class ShrubberyCreationForm : public AForm
 {
 private:
-	/* data */
+	std::string target;
 public:
-	ShrubberyCreationForm(std::string name);
+	ShrubberyCreationForm(std::string name, std::string target);
 	~ShrubberyCreationForm();
 	void execute(Bureaucrat const &executor) const throw(std::exception);
 };
