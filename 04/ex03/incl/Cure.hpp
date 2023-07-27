@@ -7,7 +7,7 @@
 class Cure : public AMateria
 {
 	private:
-		static const std::string _type;
+		static std::string _type;
 	public:
 		Cure();
 		Cure(const Cure &i);

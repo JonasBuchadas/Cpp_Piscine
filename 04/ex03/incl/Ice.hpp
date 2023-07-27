@@ -7,7 +7,7 @@
 class Ice : public AMateria
 {
 	private:
-		static const std::string _type;
+		static std::string _type;
 	public:
 		Ice();
 		Ice(const Ice &i);

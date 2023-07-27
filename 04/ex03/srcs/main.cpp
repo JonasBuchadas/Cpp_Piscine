@@ -1,17 +1,21 @@
 #include "recap.hpp"
 
-int main (void)
+int main()
 {
-	AMateria* ice = new Ice();
-	ICharacter* j = new Character("Jonas");
-
-	std::cout << ice->getType() << std::endl;
-	j->equip(ice);
-	ICharacter* s = new Character("Sara");
-	j->use(1, *s);
-	s->equip(ice);
-	s->use(1, *j);
-	delete j;
-	delete s;
+	IMateriaSource* src = new MateriaSource();
+	src->learnMateria(new Ice());
+	src->learnMateria(new Cure());
+	ICharacter* me = new Character("me");
+	AMateria* tmp;
+	tmp = src->createMateria("ice");
+	me->equip(tmp);
+	tmp = src->createMateria("cure");
+	me->equip(tmp);
+	ICharacter* bob = new Character("bob");
+	me->use(0, *bob);
+	me->use(1, *bob);
+	delete bob;
+	delete me;
+	delete src;
 	return 0;
 }
