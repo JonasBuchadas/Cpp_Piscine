@@ -8,15 +8,15 @@ int main(void)
 		std::cout << j;
 		j.incrementGrade();
 		std::cout << j;
-		RobotomyRequestForm f("Jonas");
-		PresidentialPardonForm p("Sara");
-		ShrubberyCreationForm s("tree");
+		RobotomyRequestForm f("form", "Jonas");
+		PresidentialPardonForm p("form", "Sara");
+		ShrubberyCreationForm s("1","tree");
 		f.beSigned(j);
 		p.beSigned(j);
 		s.beSigned(j);
 		j.executeForm(f);
 		j.executeForm(p);
-		// j.executeForm(s);
+		j.executeForm(s);
 	}
 	catch (const std::exception &e)
 	{

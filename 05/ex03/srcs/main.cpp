@@ -1,4 +1,4 @@
-#include "Form28b.hpp"
+#include "Ex03.hpp"
 
 int main(void)
 {
@@ -8,6 +8,8 @@ int main(void)
 		std::cout << j;
 		j.incrementGrade();
 		std::cout << j;
+		Intern i = Intern();
+		AForm* d = i.makeForm("shrubbery creation", "shrubb");
 		RobotomyRequestForm f("Jonas");
 		PresidentialPardonForm p("Sara");
 		ShrubberyCreationForm s("tree");
@@ -17,6 +19,7 @@ int main(void)
 		j.executeForm(f);
 		j.executeForm(p);
 		// j.executeForm(s);
+		delete d;
 	}
 	catch (const std::exception &e)
 	{
