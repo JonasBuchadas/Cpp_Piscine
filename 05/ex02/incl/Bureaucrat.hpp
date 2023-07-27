@@ -22,13 +22,14 @@ public:
 	void incrementGrade() throw(std::exception);
 	void decrementGrade() throw(std::exception);
 	void signForm(AForm &f);
+	void executeForm(AForm &f);
 	static int gradeControl(int grade) throw(std::exception);
 
 	class GradeTooHighException : public std::exception{
 		public :
 			virtual const char * what() const throw()
 			{
-				return "Bureaucrat Grade is too high";
+				return "Bureaucrat grade is too high";
 			}
 	};
 
@@ -36,7 +37,7 @@ public:
 		public :
 			virtual const char * what() const throw()
 			{
-				return "Bureaucrat Grade is too low";
+				return "Bureaucrat grade is too low";
 			}
 	};
 };

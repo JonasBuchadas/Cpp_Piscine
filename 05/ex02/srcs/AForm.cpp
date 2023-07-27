@@ -39,7 +39,7 @@ void AForm::beSigned(Bureaucrat &b) throw (std::exception)
 void AForm::checkExecution(Bureaucrat const &b) const throw (std::exception)
 {
 	if (b.getGrade() > this->gradeToExecute)
-		throw AForm::GradeTooLowException();
+		throw Bureaucrat::GradeTooLowException();
 	if (!this->sign)
 		throw AForm::FormNotSigned();
 }

@@ -4,16 +4,19 @@ int main(void)
 {
 	try
 	{
-		Bureaucrat j("Jonas", 4);
+		Bureaucrat j("Jonas", 5);
 		std::cout << j;
 		j.incrementGrade();
 		std::cout << j;
 		RobotomyRequestForm f("form", "Jonas");
 		PresidentialPardonForm p("form", "Sara");
+		ShrubberyCreationForm s("1","tree");
 		f.beSigned(j);
-		f.execute(j);
 		p.beSigned(j);
-		p.execute(j);
+		s.beSigned(j);
+		j.executeForm(f);
+		j.executeForm(p);
+		j.executeForm(s);
 	}
 	catch (const std::exception &e)
 	{
