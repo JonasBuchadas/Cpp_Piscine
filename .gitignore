@@ -1,6 +1,12 @@
 # IDE
 **/.vscode
 
+# LSP Clangd
+**/.cache
+
+# Compilation Database
+**/compile_commands.json
+
 # Prerequisites
 *.d
 
