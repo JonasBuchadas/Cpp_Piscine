@@ -1,23 +1,19 @@
 #pragma once
 
 #include <iostream>
-#include <stdlib.h>
 #include <math.h>
 #include <iomanip>
 #include <string.h>
-#include <string>
 #include <limits>
-#include <climits>
-#include <cfloat>
 #include <AConverter.hpp>
 
-typedef bool (*funcValPtr)(double d, char* end);
-
-typedef void (*funcPrintPtr)(double d);
 
 class ScalarConverter
 {
 	private:
+		typedef bool (*funcValPtr)(double d, char* end);
+		typedef void (*funcPrintPtr)(double d);
+
 		static double convertMathConsts(double d, char* str);
 		static bool isCastableToChar(double d, char* end);
 		static bool isCastableToInt(double d, char* end);
