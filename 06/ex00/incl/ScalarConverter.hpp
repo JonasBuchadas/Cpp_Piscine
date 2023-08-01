@@ -5,7 +5,6 @@
 #include <iomanip>
 #include <string.h>
 #include <limits>
-#include <AConverter.hpp>
 
 
 class ScalarConverter
