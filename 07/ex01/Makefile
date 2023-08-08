@@ -2,7 +2,7 @@
 OS=			$(shell uname -s)
 
 ### EXECUTABLE ###
-NAME=		Ex00
+NAME=		Ex01
 
 ### COMPILATION ###
 CC=			g++
