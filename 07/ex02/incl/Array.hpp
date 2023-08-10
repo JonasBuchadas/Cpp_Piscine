@@ -7,9 +7,8 @@ template <typename T>
 class Array
 {
 private:
-	T *array;
-	unsigned int size;
-
+	T* _array;
+	unsigned int _size;
 public:
 	Array();
 	Array(unsigned int n);
@@ -17,12 +16,13 @@ public:
 	~Array();
 	Array& operator=(Array& src) const;
 	T& operator[](unsigned int i) throw (std::exception);
-	class OutOfRange : public std::exception
+
+	class OutOfBounds : public std::exception
 	{
 	public:
 		virtual const char *what() const throw()
 		{
-			return "index out of range";
+			return "index out of bounds";
 		}
 	};
 };
