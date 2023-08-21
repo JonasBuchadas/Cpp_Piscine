@@ -1,5 +1,5 @@
 #include <Span.hpp>
 
-Span::Span(/* args */) {}
+Span::Span(unsigned int size) : _size(size) {}
 
 Span::~Span() {}

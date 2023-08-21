@@ -4,8 +4,14 @@
 
 class Span {
  private:
-  /* data */
+  unsigned int _size;
+
  public:
-  Span(/* args */);
+  Span(unsigned int size);
   ~Span();
+  // void addNumber(int n) throw(std::exception);
 };
+
+// void Span::addNumber(int n) throw (std::exception) {
+//
+// }
