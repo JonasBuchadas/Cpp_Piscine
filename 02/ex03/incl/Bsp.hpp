@@ -1,7 +1,8 @@
 #ifndef __BSP_HPP__
-# define __BSP_HPP__
+#define __BSP_HPP__
 
 #include <iostream>
+
 #include "Fixed.hpp"
 #include "Point.hpp"
 

@@ -1,64 +1,48 @@
 #include <Bureaucrat.hpp>
 
-Bureaucrat::Bureaucrat(std::string const name, int grade) throw(std::exception) : name(name)
-{
-	setGrade(grade);
+Bureaucrat::Bureaucrat(std::string const name, int grade) throw(std::exception)
+    : name(name) {
+  setGrade(grade);
 }
 
-Bureaucrat::~Bureaucrat()
-{
+Bureaucrat::~Bureaucrat() {}
+
+int Bureaucrat::getGrade() { return this->grade; }
+
+std::string Bureaucrat::getName() { return this->name; }
+
+void Bureaucrat::setGrade(int grade) throw(std::exception) {
+  this->grade = gradeControl(grade);
 }
 
-int Bureaucrat::getGrade()
-{
-	return this->grade;
+int Bureaucrat::gradeControl(int grade) throw(std::exception) {
+  if (grade <= 0) throw Bureaucrat::GradeTooHighException();
+  if (grade > 150) throw Bureaucrat::GradeTooLowException();
+  return grade;
 }
 
-std::string Bureaucrat::getName()
-{
-	return this->name;
+void Bureaucrat::decrementGrade() throw(std::exception) {
+  setGrade(++this->grade);
 }
 
-void Bureaucrat::setGrade(int grade) throw(std::exception)
-{
-	this->grade = gradeControl(grade);
+void Bureaucrat::incrementGrade() throw(std::exception) {
+  setGrade(--this->grade);
 }
 
-int Bureaucrat::gradeControl(int grade) throw(std::exception)
-{
-	if (grade <= 0)
-		throw Bureaucrat::GradeTooHighException();
-	if (grade > 150)
-		throw Bureaucrat::GradeTooLowException();
-	return grade;
+void Bureaucrat::signForm(Form &f) {
+  try {
+    f.beSigned(*this);
+  } catch (const std::exception &e) {
+    std::cout << "Bureaucrat " << this->name << " couldn't sign form "
+              << f.getName() << " because grade is lower." << std::endl;
+    return;
+  }
+  std::cout << "Bureaucrat " << this->name << " signed form " << f.getName()
+            << std::endl;
 }
 
-void Bureaucrat::decrementGrade() throw(std::exception)
-{
-	setGrade(++this->grade);
-}
-
-void Bureaucrat::incrementGrade() throw(std::exception)
-{
-	setGrade(--this->grade);
-}
-
-void Bureaucrat::signForm(Form &f)
-{
-	try
-	{
-		f.beSigned(*this);
-	}
-	catch (const std::exception &e)
-	{
-		std::cout << "Bureaucrat " << this->name << " couldn't sign form " << f.getName() << " because grade is lower." << std::endl;
-		return;
-	}
-	std::cout << "Bureaucrat " << this->name << " signed form " << f.getName() << std::endl;
-}
-
-std::ostream &operator<<(std::ostream &out, Bureaucrat &b)
-{
-	out << b.getName() << " bureaucrat grade " << b.getGrade() << "." << std::endl;
-	return out;
+std::ostream &operator<<(std::ostream &out, Bureaucrat &b) {
+  out << b.getName() << " bureaucrat grade " << b.getGrade() << "."
+      << std::endl;
+  return out;
 }

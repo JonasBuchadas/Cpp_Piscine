@@ -1,25 +1,26 @@
 #pragma once
 
 #include <iostream>
+
 #include "Animal.hpp"
 #include "Brain.hpp"
 
-class Dog: public AAnimal
-{
-private:
-	Brain*	brain;
-protected:
-	std::string type;
-public:
-	Dog();
-	Dog(const Dog& d);
-	virtual ~Dog();
+class Dog : public AAnimal {
+ private:
+  Brain* brain;
 
-	Dog& operator=(const Dog &c);
+ protected:
+  std::string type;
 
-	std::string getType();
-	Brain& getBrain();
+ public:
+  Dog();
+  Dog(const Dog& d);
+  virtual ~Dog();
 
-	virtual void makeSound() const;
+  Dog& operator=(const Dog& c);
+
+  std::string getType();
+  Brain& getBrain();
+
+  virtual void makeSound() const;
 };
-

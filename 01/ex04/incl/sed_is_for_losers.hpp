@@ -2,8 +2,8 @@
 #ifndef __SED_IS_FOR_LOSERS__
 #define __SED_IS_FOR_LOSERS__
 
-#include <iostream>
 #include <fstream>
+#include <iostream>
 
 void replace(std::string, std::string, std::string);
 

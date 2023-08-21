@@ -1,11 +1,12 @@
 #ifndef __MYAWESOMEPHONEBOOK_HPP__
-# define __MYAWESOMEPHONEBOOK_HPP__
+#define __MYAWESOMEPHONEBOOK_HPP__
 
-#include "PhoneBook.hpp"
-#include "Contact.hpp"
 #include <cstdlib>
 #include <iomanip>
-#include <string>
 #include <sstream>
+#include <string>
+
+#include "Contact.hpp"
+#include "PhoneBook.hpp"
 
 #endif

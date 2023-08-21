@@ -1,5 +1,4 @@
 #pragma once
 
-#include <iostream>
 #include <Templates.hpp>
-
+#include <iostream>

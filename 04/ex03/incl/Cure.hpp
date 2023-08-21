@@ -1,20 +1,20 @@
 #pragma once
 
-#include <iostream>
 #include <AMateria.hpp>
 #include <ICharacter.hpp>
+#include <iostream>
 
-class Cure : public AMateria
-{
-	private:
-		static std::string _type;
-	public:
-		Cure();
-		Cure(const Cure &i);
-		~Cure();
+class Cure : public AMateria {
+ private:
+  static std::string _type;
 
-		Cure& operator=(const Cure& i);
+ public:
+  Cure();
+  Cure(const Cure& i);
+  ~Cure();
 
-		virtual AMateria* clone() const;
-		virtual void use(ICharacter& target);
+  Cure& operator=(const Cure& i);
+
+  virtual AMateria* clone() const;
+  virtual void use(ICharacter& target);
 };

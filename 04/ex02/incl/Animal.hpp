@@ -2,20 +2,18 @@
 
 #include <iostream>
 
-class AAnimal
-{
-private:
+class AAnimal {
+ private:
+ protected:
+  std::string type;
 
-protected:
-	std::string type;
-public:
-	AAnimal();
-	AAnimal(const AAnimal& a);
-	virtual ~AAnimal();
+ public:
+  AAnimal();
+  AAnimal(const AAnimal& a);
+  virtual ~AAnimal();
 
-	AAnimal& operator=(const AAnimal& a);
+  AAnimal& operator=(const AAnimal& a);
 
-	virtual void makeSound() const = 0;
-	virtual std::string getType() = 0;
+  virtual void makeSound() const = 0;
+  virtual std::string getType() = 0;
 };
-

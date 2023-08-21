@@ -2,6 +2,7 @@
 #define __ORTHODOX_CANONICAL_FORM_HPP__
 
 #include <iostream>
+
 #include "Fixed.hpp"
 
 #endif

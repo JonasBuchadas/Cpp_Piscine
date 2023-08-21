@@ -1,3 +1,5 @@
-#pragma once
+#include <Span.hpp>
 
-#include <Span.h>
+Span::Span(/* args */) {}
+
+Span::~Span() {}
