@@ -27,9 +27,9 @@ void Harl::complain(std::string level) {
 }
 
 void Harl::debug() {
-  std::cout
-      << "love having extra bacon for my "
-         "7XL-double-cheese-triple-pickle-specialketchup burger.I really do !";
+  std::cout << "love having extra bacon for my "
+               "7XL-double-cheese-triple-pickle-specialketchup burger.I "
+               "really do !";
 }
 
 void Harl::info() {
@@ -39,9 +39,9 @@ void Harl::info() {
 }
 
 void Harl::warning() {
-  std::cout
-      << "I think I deserve to have some extra bacon for free. I've been "
-         "coming for years whereas you started working here since last month.";
+  std::cout << "I think I deserve to have some extra bacon for free. I've been "
+               "coming for years whereas you started working here since last "
+               "month.";
 }
 
 void Harl::error() {
