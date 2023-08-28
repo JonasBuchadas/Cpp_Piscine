@@ -1,5 +1,4 @@
-#ifndef __CONTACT_HPP__
-#define __CONTACT_HPP__
+#pragma once
 
 #include <ctype.h>
 
@@ -7,29 +6,25 @@
 #include <iostream>
 #include <string>
 
-typedef std::string string;
-
 class Contact {
  private:
-  string _first_name;
-  string _last_name;
-  string _nickname;
-  string _phone_number;
-  string _secret;
+  std::string _first_name;
+  std::string _last_name;
+  std::string _nickname;
+  std::string _phone_number;
+  std::string _secret;
   bool _is_saved;
 
  public:
-  Contact(string first_name, string last_name, string nickname,
-          string phone_number, string secret);
+  Contact(std::string first_name, std::string last_name, std::string nickname,
+          std::string phone_number, std::string secret);
   Contact();
   ~Contact();
-  string firstName();
-  string lastName();
-  string nickname();
-  string phoneNumber();
-  string secret();
+  std::string firstName();
+  std::string lastName();
+  std::string nickname();
+  std::string phoneNumber();
+  std::string secret();
   bool isSaved();
   void print();
 };
-
-#endif

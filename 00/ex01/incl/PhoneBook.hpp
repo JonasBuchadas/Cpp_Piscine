@@ -1,5 +1,4 @@
-#ifndef __PHONEBOOK_HPP__
-#define __PHONEBOOK_HPP__
+#pragma once
 
 #include <ctype.h>
 
@@ -12,8 +11,6 @@
 #include <string>
 
 #include "Contact.hpp"
-
-typedef std::string string;
 
 class Contact;
 
@@ -32,5 +29,3 @@ class PhoneBook {
   void AddContact();
   void Search();
 };
-
-#endif

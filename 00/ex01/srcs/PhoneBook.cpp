@@ -1,10 +1,10 @@
 #include "PhoneBook.hpp"
 
-static string input_request(string field);
+static std::string input_request(std::string field);
 static void print_header_columns();
 static void print_contact_columns(Contact c, int i);
-static void print_column(string str);
-static void pause(string str);
+static void print_column(std::string str);
+static void pause(std::string str);
 
 PhoneBook::PhoneBook() { this->_size = 0; }
 
@@ -15,11 +15,11 @@ int PhoneBook::ContactSize() { return this->_size; }
 void PhoneBook::IncrementSize() { this->_size++; }
 
 void PhoneBook::AddContact() {
-  string first_name;
-  string last_name;
-  string nickname;
-  string phone_number;
-  string secret;
+  std::string first_name;
+  std::string last_name;
+  std::string nickname;
+  std::string phone_number;
+  std::string secret;
 
   first_name = input_request("first name");
   last_name = input_request("last name");
@@ -44,7 +44,7 @@ void PhoneBook::addContact(Contact contact) {
   }
 }
 
-static string input_request(string field) {
+static std::string input_request(std::string field) {
   char input[100];
 
   std::cout << "Please type the ";
@@ -57,7 +57,7 @@ static string input_request(string field) {
 
 void PhoneBook::Search() {
   int i = 0;
-  string input;
+  std::string input;
   Contact c;
 
   if (_size == 0) {
@@ -65,16 +65,16 @@ void PhoneBook::Search() {
     return;
   }
   print_header_columns();
-  while (i < _size) {
-    c = _contacts[i];
-    print_contact_columns(c, i + 1);
-    i++;
+  for (int i = 0; i < _size; i++) {
+    print_contact_columns(_contacts[i], i + 1);
   }
+  std::cout << "Please choose contact number" << std::endl;
   std::cin >> input;
   std::istringstream(input) >> i;
-  if (i > _size || i < 1)
-    std::cout << "Invalid input" << std::endl;
-  else
+  if (i > _size || i < 1) {
+    pause("Invalid input. Returning to main screen");
+    return;
+  } else
     _contacts[i - 1].print();
   pause("Press any key to return");
 }
@@ -89,7 +89,7 @@ static void print_header_columns() {
 
 static void print_contact_columns(Contact c, int i) {
   std::stringstream ss;
-  string index;
+  std::string index;
 
   ss << i;
   ss >> index;
@@ -100,7 +100,7 @@ static void print_contact_columns(Contact c, int i) {
   std::cout << std::endl;
 }
 
-static void print_column(string str) {
+static void print_column(std::string str) {
   int len = str.length();
   std::cout << std::setw(10);
   if (len > 10)
@@ -110,7 +110,7 @@ static void print_column(string str) {
   std::cout << "|";
 }
 
-static void pause(string str) {
+static void pause(std::string str) {
   std::cin.ignore();
   std::cout << str << std::endl;
   std::cin.get();

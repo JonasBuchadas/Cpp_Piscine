@@ -1,6 +1,4 @@
-#ifndef __MYAWESOMEPHONEBOOK_HPP__
-#define __MYAWESOMEPHONEBOOK_HPP__
-
+#pragma once
 #include <cstdlib>
 #include <iomanip>
 #include <sstream>
@@ -8,5 +6,3 @@
 
 #include "Contact.hpp"
 #include "PhoneBook.hpp"
-
-#endif
