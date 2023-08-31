@@ -1,4 +1,6 @@
 #pragma once
+#ifndef __PHONEBOOK_H__
+#define __PHONEBOOK_H__
 
 #include <ctype.h>
 
@@ -29,3 +31,5 @@ class PhoneBook {
   void AddContact();
   void Search();
 };
+
+#endif

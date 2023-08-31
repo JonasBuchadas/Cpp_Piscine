@@ -1,4 +1,6 @@
 #pragma once
+#ifndef __CONTACT_H__
+#define __CONTACT_H__
 
 #include <ctype.h>
 
@@ -28,3 +30,5 @@ class Contact {
   bool isSaved();
   void print();
 };
+
+#endif

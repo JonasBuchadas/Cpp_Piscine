@@ -1,5 +1,6 @@
-#ifndef __MEGAPHONE_HPP__
-#define __MEGAPHONE_HPP__
+#pragma once
+#ifndef __MEGAPHONE_H__
+#define __MEGAPHONE_H__
 
 #include <ctype.h>
 

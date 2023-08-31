@@ -32,17 +32,18 @@ Account::Account(int initial_deposit) {
 
 Account::~Account() {
   _displayTimestamp();
-  std::cout << "index:" << _accountIndex << ";amount:" << checkAmount()
-            << ";closed" << std::endl;
+  std::cout << "index:" << _accountIndex << ";amount:" << _amount << ";closed"
+            << std::endl;
 }
 
 void Account::makeDeposit(int amount) {
+  int p_amount = _amount;
   _amount += amount;
   _totalAmount += amount;
   _nbDeposits++;
   _totalNbDeposits++;
   _displayTimestamp();
-  std::cout << "index:" << _accountIndex << ";p_amount:" << checkAmount()
+  std::cout << "index:" << _accountIndex << ";p_amount:" << p_amount
             << ";deposit:" << amount << ";amount:" << _amount
             << ";nb_deposits:" << _nbDeposits << std::endl;
 }
@@ -50,16 +51,17 @@ void Account::makeDeposit(int amount) {
 bool Account::makeWithdrawal(int amount) {
   if (amount > _amount) {
     _displayTimestamp();
-    std::cout << "index:" << _accountIndex << ";p_amount:" << checkAmount()
+    std::cout << "index:" << _accountIndex << ";p_amount:" << _amount
               << ";withdrawal:refused" << std::endl;
     return false;
   }
+  int p_amount = _amount;
   _amount -= amount;
   _totalAmount -= amount;
   _nbWithdrawals++;
   _totalNbWithdrawals++;
   _displayTimestamp();
-  std::cout << "index:" << _accountIndex << ";p_amount:" << checkAmount()
+  std::cout << "index:" << _accountIndex << ";p_amount:" << p_amount
             << ";withdrawal:" << amount << ";amount:" << _amount
             << ";nb_withdrawals:" << _nbWithdrawals << std::endl;
   return true;
