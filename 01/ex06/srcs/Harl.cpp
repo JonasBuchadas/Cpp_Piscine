@@ -12,6 +12,15 @@ Harl::~Harl() {}
 void Harl::complain(std::string level) {
   std::string array[] = {"DEBUG", "INFO", "WARNING", "ERROR"};
 
+  switch (level) {
+    case DEBUG:
+
+      std::cout << "[ " << array[i] << " ]" << std::endl;
+      (this->*funcs[i++])();
+    default:
+
+      break;
+  }
   for (int i = 0; i < 4; i++) {
     if (array[i] == level) {
       while (i < 4) {

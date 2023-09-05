@@ -1,22 +1,24 @@
 #include "sed_is_for_losers.hpp"
 
 int main(int argc, char *argv[]) {
-  if (argc == 4) {
-    if (!argv[2][0] || !argv[3][0])
-      std::cout << "Strings can't be empty" << std::endl;
-    else
-      replace(argv[1], argv[2], argv[3]);
-  } else
+  if (argc != 4) {
     std::cout << "Wrong amount of arguments" << std::endl;
+    return 0;
+  }
+  if (!argv[2][0] || !argv[3][0]) {
+    std::cout << "Strings can't be empty" << std::endl;
+    return 0;
+  }
+  replace(argv[1], argv[2], argv[3]);
   return 0;
 }
 
 void replace(std::string filename, std::string s1, std::string s2) {
   std::ofstream output("output");
   std::ifstream input(filename.c_str());
-  std::string line;
-  size_t i;
-  size_t pos;
+  std::string   line;
+  size_t        i;
+  size_t        pos;
 
   if (!input.good()) {
     std::cout << "File is invalid or does not exist" << std::endl;
