@@ -15,7 +15,7 @@ class Contact {
   std::string _nickname;
   std::string _phone_number;
   std::string _secret;
-  bool _is_saved;
+  bool        _is_saved;
 
  public:
   Contact(std::string first_name, std::string last_name, std::string nickname,
@@ -27,8 +27,8 @@ class Contact {
   std::string nickname();
   std::string phoneNumber();
   std::string secret();
-  bool isSaved();
-  void print();
+  bool        isSaved();
+  void        print();
 };
 
 #endif

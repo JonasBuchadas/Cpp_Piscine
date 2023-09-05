@@ -19,12 +19,12 @@ class Contact;
 
 class PhoneBook {
  private:
-  Contact _contacts[8];
+  Contact                _contacts[8];
   static short int const _max_size = 8;
-  short int _size;
-  void addContact(Contact contact);
-  int ContactSize();
-  void IncrementSize();
+  short int              _size;
+  void                   addContact(Contact contact);
+  int                    ContactSize();
+  void                   IncrementSize();
 
  public:
   PhoneBook();

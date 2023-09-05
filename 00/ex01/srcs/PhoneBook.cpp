@@ -26,15 +26,20 @@ void PhoneBook::AddContact() {
 
   std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
   first_name = input_request("first name");
-  if (first_name.empty()) return pause("First name field cannot be empty");
+  if (first_name.empty())
+    return pause("First name field cannot be empty");
   last_name = input_request("last name");
-  if (last_name.empty()) return pause("Last name field cannot be empty");
+  if (last_name.empty())
+    return pause("Last name field cannot be empty");
   nickname = input_request("nickname");
-  if (nickname.empty()) return pause("Nickname field cannot be empty");
+  if (nickname.empty())
+    return pause("Nickname field cannot be empty");
   phone_number = input_request("phone number");
-  if (phone_number.empty()) return pause("Phone number field cannot be empty");
+  if (phone_number.empty())
+    return pause("Phone number field cannot be empty");
   secret = input_request("darkest secret");
-  if (secret.empty()) return pause("Darkest secret field cannot be empty");
+  if (secret.empty())
+    return pause("Darkest secret field cannot be empty");
   Contact contact(first_name, last_name, nickname, phone_number, secret);
   PhoneBook::addContact(contact);
 }
@@ -117,7 +122,8 @@ static void print_column(std::string str) {
 }
 
 static void pause(std::string str) {
-  if (!str.empty()) std::cout << str << ". ";
+  if (!str.empty())
+    std::cout << str << ". ";
   std::cout << "Press any key to return." << std::endl;
   std::cin.get();
 }

@@ -2,16 +2,16 @@
 
 #include <iostream>
 
-int Account::_nbAccounts = 0;
-int Account::_totalAmount = 0;
-int Account::_totalNbDeposits = 0;
+int Account::_nbAccounts         = 0;
+int Account::_totalAmount        = 0;
+int Account::_totalNbDeposits    = 0;
 int Account::_totalNbWithdrawals = 0;
 
 Account::Account() {
-  _amount = 0;
-  _nbDeposits = 0;
+  _amount        = 0;
+  _nbDeposits    = 0;
   _nbWithdrawals = 0;
-  _accountIndex = _nbAccounts;
+  _accountIndex  = _nbAccounts;
   _nbAccounts++;
   _displayTimestamp();
   std::cout << "index:" << _accountIndex << ";amount:" << _amount << ";created"
@@ -21,9 +21,9 @@ Account::Account() {
 Account::Account(int initial_deposit) {
   _amount = initial_deposit;
   _totalAmount += initial_deposit;
-  _nbDeposits = 0;
+  _nbDeposits    = 0;
   _nbWithdrawals = 0;
-  _accountIndex = _nbAccounts;
+  _accountIndex  = _nbAccounts;
   _nbAccounts++;
   _displayTimestamp();
   std::cout << "index:" << _accountIndex << ";amount:" << _amount << ";created"
@@ -69,7 +69,7 @@ bool Account::makeWithdrawal(int amount) {
 
 void Account::_displayTimestamp() {
   time_t curr_time;
-  char date_string[18];
+  char   date_string[18];
 
   time(&curr_time);
 

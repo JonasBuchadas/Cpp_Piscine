@@ -1,6 +1,5 @@
-#include <vector>
-
 #include "Span.hpp"
+#include <vector>
 
 int main() {
   Span sp = Span(5);

@@ -4,6 +4,9 @@
 # LSP Clangd
 **/.cache
 
+# Clangd
+**/.clangd
+
 # Compilation Database
 **/compile_commands.json
 

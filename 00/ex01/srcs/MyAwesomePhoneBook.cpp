@@ -3,7 +3,7 @@
 static std::string ShowMenu();
 
 int main(void) {
-  PhoneBook phonebook;
+  PhoneBook   phonebook;
   std::string option;
 
   system("clear");

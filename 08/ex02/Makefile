@@ -2,11 +2,11 @@
 OS=			$(shell uname -s)
 
 ### EXECUTABLE ###
-NAME=		tests
+NAME=		Ex01
 
 ### COMPILATION ###
 CC=			g++
-CFLAGS=		-Wall -Werror -Wextra -g -std=c++98
+CFLAGS=		-Wall -Werror -Wextra -g -std=c++98 -fsanitize=address
 
 ### PATHS ###
 INCL_PATH=	incl/
@@ -14,8 +14,9 @@ SRCS_PATH=	srcs/
 OBJS_PATH=	objs/
 
 ### SOURCE FILES ###
-SRC_NAME=	$(NAME).cpp
-SRCS=		Account.cpp
+SRC_NAME=	main.cpp \
+					Span.cpp
+SRCS=
 SRCS_NAME=	$(addprefix $(SRCS_PATH), $(SRC_NAME) $(SRCS))
 ### OBJECT FILES ###
 OBJ_NAME=	$(SRC_NAME:.cpp=.o)
@@ -43,7 +44,7 @@ $(OBJS_PATH)%.o: $(SRCS_PATH)%.cpp
 	@$(CC) $(CFLAGS) $(INC) -c $< -o $@
 
 ### ACTIVE RULES ###
-all: $(NAME) ## compiles binary with mandatory requirements
+all: $(NAME) ## compiles megaphone with mandatory requirements
 
 help:  ## show this help
 	@echo "usage: make [target]"
@@ -60,12 +61,6 @@ $(OBJS_PATH):
 $(OBJS_BT_PATH):
 	@mkdir -p $@
 
-test: $(NAME) ## compares logfiles without timestamp data
-	@./tests | awk '{print $$2}' > logfile.log
-	@cat 19920104_091532.log | awk '{print $$2}' > intra.log
-	@diff logfile.log intra.log
-	@rm logfile.log intra.log
-
 clean: ## removes object files
 	@rm -rf $(OBJS_PATH)
 	@$(RED)Object files removed$(DEFAULT)
@@ -74,7 +69,7 @@ fclean: clean ## removes object files and binary
 	@rm -f $(NAME)
 	@$(RED)$(NAME) Program removed$(DEFAULT)
 
-re: fclean all ## recompiles binary
+re: fclean all ## recompiles minishell
 
 ### PHONY RULE ###
-.PHONY:	all help bonus clean fclean re norm test
+.PHONY:	all help bonus clean fclean re norm

@@ -14,7 +14,7 @@ void Span::addNumber(int n) throw(std::exception) {
 }
 
 void Span::addNumbers(std::vector<int> array) throw(std::exception) {
-  if (_array.size() + array.size() > _size)
+  if (_array.size() + array.size() > _size )
     throw Span::MaxSize();
   _array.insert(_array.end(), array.begin(), array.end());
 }
@@ -36,7 +36,7 @@ int Span::shortestSpan() throw(std::exception) {
   for (it = _array.begin(); it != _array.end() - 1; ++it) {
     if ((*(it + 1) - *it) < shortestSpan)
       shortestSpan = *(it + 1) - *it;
-    if (shortestSpan == 0)
+    if (shortestSpan == 0) 
       return shortestSpan;
   }
   return shortestSpan;
