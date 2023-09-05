@@ -1,5 +1,8 @@
 #include "PhoneBook.hpp"
 
+#include <limits>
+#include <string>
+
 static std::string input_request(std::string field);
 static void print_header_columns();
 static void print_contact_columns(Contact c, int i);
@@ -21,17 +24,19 @@ void PhoneBook::AddContact() {
   std::string phone_number;
   std::string secret;
 
+  std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
   first_name = input_request("first name");
+  if (first_name.empty()) return pause("First name field cannot be empty");
   last_name = input_request("last name");
+  if (last_name.empty()) return pause("Last name field cannot be empty");
   nickname = input_request("nickname");
+  if (nickname.empty()) return pause("Nickname field cannot be empty");
   phone_number = input_request("phone number");
+  if (phone_number.empty()) return pause("Phone number field cannot be empty");
   secret = input_request("darkest secret");
-
-  if (!first_name.empty() && !last_name.empty() && !nickname.empty() &&
-      !phone_number.empty() && !secret.empty()) {
-    Contact contact(first_name, last_name, nickname, phone_number, secret);
-    PhoneBook::addContact(contact);
-  }
+  if (secret.empty()) return pause("Darkest secret field cannot be empty");
+  Contact contact(first_name, last_name, nickname, phone_number, secret);
+  PhoneBook::addContact(contact);
 }
 
 void PhoneBook::addContact(Contact contact) {
@@ -45,13 +50,11 @@ void PhoneBook::addContact(Contact contact) {
 }
 
 static std::string input_request(std::string field) {
-  char input[100];
-
+  std::string input;
   std::cout << "Please type the ";
   std::cout << field;
   std::cout << " of the contact" << std::endl;
-  std::cin >> input;
-
+  std::getline(std::cin, input);
   return (input);
 }
 
@@ -61,7 +64,7 @@ void PhoneBook::Search() {
   Contact c;
 
   if (_size == 0) {
-    pause("No contact found. Press any key to return");
+    pause("No contact found");
     return;
   }
   print_header_columns();
@@ -72,11 +75,14 @@ void PhoneBook::Search() {
   std::cin >> input;
   std::istringstream(input) >> i;
   if (i > _size || i < 1) {
-    pause("Invalid input. Returning to main screen");
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    pause("Invalid input");
     return;
-  } else
+  } else {
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
     _contacts[i - 1].print();
-  pause("Press any key to return");
+  }
+  pause("");
 }
 
 static void print_header_columns() {
@@ -111,7 +117,7 @@ static void print_column(std::string str) {
 }
 
 static void pause(std::string str) {
-  std::cin.ignore();
-  std::cout << str << std::endl;
+  if (!str.empty()) std::cout << str << ". ";
+  std::cout << "Press any key to return." << std::endl;
   std::cin.get();
 }

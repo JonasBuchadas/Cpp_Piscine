@@ -8,6 +8,7 @@
 #include <cstring>
 #include <iomanip>
 #include <iostream>
+#include <limits>
 #include <list>
 #include <sstream>
 #include <string>
