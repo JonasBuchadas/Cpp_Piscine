@@ -5,7 +5,7 @@ OS=			$(shell uname -s)
 NAME=		harl2.0
 
 ### COMPILATION ###
-CC=			g++
+CC=			c++
 CFLAGS=		-Wall -Werror -Wextra -g -std=c++98 -fsanitize=address
 
 ### PATHS ###

@@ -50,18 +50,10 @@ void PhoneBook::AddContact() {
 
 void PhoneBook::addContact(Contact contact) {
   _contacts[_next_index] = contact;
-  _next_index++;
-  if (_next_index == 8)
+  if (++_next_index == 8)
     _next_index = 0;
   if (++_size > 8)
     _size = 8;
-  // if (_size == _max_size) {
-  //   for (int i = _max_size - 1; i > 0; i--) _contacts[i] = _contacts[i - 1];
-  //   _contacts[0] = contact;
-  // } else {
-  //   _contacts[_size] = contact;
-  //   _size++;
-  // }
 }
 
 static std::string input_request(std::string field) {
@@ -78,6 +70,7 @@ void PhoneBook::Search() {
   std::string input;
   Contact     c;
 
+  std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
   if (_size == 0) {
     pause("No contact found");
     return;
@@ -87,8 +80,7 @@ void PhoneBook::Search() {
     print_contact_columns(_contacts[i], i + 1);
   }
   std::cout << "Please choose contact number" << std::endl;
-  std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-  std::getline(std::cin, input);
+  std::cin >> input;
   std::istringstream(input) >> i;
   if (i > _size || i < 1) {
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
