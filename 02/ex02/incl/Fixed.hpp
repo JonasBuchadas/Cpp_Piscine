@@ -7,7 +7,7 @@
 
 class Fixed {
  private:
-  int raw_bits;
+  int              raw_bits;
   static const int frac_bits = 8;
 
  public:
@@ -16,10 +16,10 @@ class Fixed {
   Fixed(const int raw);
   Fixed(const float fp);
   ~Fixed();
-  int getRawBits(void) const;
-  void setRawBits(int const raw);
+  int   getRawBits(void) const;
+  void  setRawBits(int const raw);
   float toFloat(void) const;
-  int toInt(void) const;
+  int   toInt(void) const;
 
   const Fixed &operator=(const Fixed &f);
 
@@ -38,12 +38,12 @@ class Fixed {
 
   Fixed &operator++(void);
   Fixed &operator--(void);
-  Fixed operator++(int);
-  Fixed operator--(int);
+  Fixed  operator++(int);
+  Fixed  operator--(int);
 
-  static Fixed &min(Fixed &f1, Fixed &f2);
+  static Fixed       &min(Fixed &f1, Fixed &f2);
   static const Fixed &min(const Fixed &f1, const Fixed &f2);
-  static Fixed &max(Fixed &f1, Fixed &f2);
+  static Fixed       &max(Fixed &f1, Fixed &f2);
   static const Fixed &max(const Fixed &f1, const Fixed &f2);
 };
 

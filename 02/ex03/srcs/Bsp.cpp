@@ -4,8 +4,9 @@ bool bsp(Point const a, Point const b, Point const c, Point const point) {
   Fixed area;
   Fixed area_sum = 0;
 
-  if (point == a || point == b || point == c) return (false);
-  area = area_triangle(a, b, c);
+  if (point == a || point == b || point == c)
+    return (false);
+  area     = area_triangle(a, b, c);
   area_sum = area_sum + area_triangle(a, b, point);
   area_sum = area_sum + area_triangle(b, c, point);
   area_sum = area_sum + area_triangle(c, a, point);
@@ -29,6 +30,7 @@ Fixed area_triangle(Point const a, Point const b, Point const c) {
 
   area = (cross1 + cross2 + cross3) / Fixed(2.0f);
 
-  if (area >= 0) return (area);
+  if (area >= 0)
+    return (area);
   return (area * Fixed(-1.0f));
 }

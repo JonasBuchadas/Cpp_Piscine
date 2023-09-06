@@ -23,6 +23,8 @@ float Fixed::toFloat(void) const {
 int Fixed::toInt(void) const { return (this->raw_bits >> Fixed::frac_bits); }
 
 const Fixed &Fixed::operator=(const Fixed &f) {
+  if (this == &f)
+    return (*this);
   this->raw_bits = f.raw_bits;
   return (*this);
 }
@@ -90,22 +92,26 @@ Fixed Fixed::operator--(int) {
 }
 
 Fixed &Fixed::min(Fixed &f1, Fixed &f2) {
-  if (f1.getRawBits() < f2.getRawBits()) return (f1);
+  if (f1.getRawBits() < f2.getRawBits())
+    return (f1);
   return (f2);
 }
 
 const Fixed &Fixed::min(const Fixed &f1, const Fixed &f2) {
-  if (f1.getRawBits() < f2.getRawBits()) return (f1);
+  if (f1.getRawBits() < f2.getRawBits())
+    return (f1);
   return (f2);
 }
 
 Fixed &Fixed::max(Fixed &f1, Fixed &f2) {
-  if (f1.getRawBits() > f2.getRawBits()) return (f1);
+  if (f1.getRawBits() > f2.getRawBits())
+    return (f1);
   return (f2);
 }
 
 const Fixed &Fixed::max(const Fixed &f1, const Fixed &f2) {
-  if (f1.getRawBits() > f2.getRawBits()) return (f1);
+  if (f1.getRawBits() > f2.getRawBits())
+    return (f1);
   return (f2);
 }
 

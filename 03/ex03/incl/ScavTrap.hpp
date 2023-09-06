@@ -15,8 +15,8 @@ class ScavTrap : virtual public ClapTrap {
   static int defaultHitPoints(void);
   static int defaultAttackDamage(void);
   static int defaultEnergyPoints(void);
-  void attack(const std::string &target);
-  void guardGate();
+  void       attack(const std::string &target);
+  void       guardGate();
 };
 
 #endif
