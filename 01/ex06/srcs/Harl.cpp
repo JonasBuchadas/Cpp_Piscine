@@ -11,25 +11,27 @@ Harl::~Harl() {}
 
 void Harl::complain(std::string level) {
   std::string array[] = {"DEBUG", "INFO", "WARNING", "ERROR"};
-
-  switch (level) {
-    case DEBUG:
-
-      std::cout << "[ " << array[i] << " ]" << std::endl;
-      (this->*funcs[i++])();
-    default:
-
-      break;
-  }
-  for (int i = 0; i < 4; i++) {
-    if (array[i] == level) {
-      while (i < 4) {
-        std::cout << "[ " << array[i] << " ]" << std::endl;
-        (this->*funcs[i++])();
-        std::cout << std::endl;
-      }
-      return;
+  int         i;
+  for (int j = 0; j < 4; j++) {
+    if (array[j] == level) {
+      i = j;
     }
+  }
+  switch (i) {
+    case 0:
+      std::cout << "[ " << array[i] << " ]" << std::endl;
+      (this->*funcs[i])();
+    case 1:
+      std::cout << "[ " << array[i] << " ]" << std::endl;
+      (this->*funcs[i])();
+    case 2:
+      std::cout << "[ " << array[i] << " ]" << std::endl;
+      (this->*funcs[i])();
+    case 3:
+      std::cout << "[ " << array[i] << " ]" << std::endl;
+      (this->*funcs[i])();
+    default:
+      return;
   }
   std::cout << "[ Probably complaining about insignificant problems ]"
             << std::endl;

@@ -22,6 +22,7 @@ class PhoneBook {
   Contact                _contacts[8];
   static short int const _max_size = 8;
   short int              _size;
+  short int              _next_index;
   void                   addContact(Contact contact);
   int                    ContactSize();
   void                   IncrementSize();

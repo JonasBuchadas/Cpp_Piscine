@@ -1,15 +1,19 @@
 #include "PhoneBook.hpp"
 
+#include <iostream>
 #include <limits>
 #include <string>
 
 static std::string input_request(std::string field);
-static void print_header_columns();
-static void print_contact_columns(Contact c, int i);
-static void print_column(std::string str);
-static void pause(std::string str);
+static void        print_header_columns();
+static void        print_contact_columns(Contact c, int i);
+static void        print_column(std::string str);
+static void        pause(std::string str);
 
-PhoneBook::PhoneBook() { this->_size = 0; }
+PhoneBook::PhoneBook() {
+  this->_size       = 0;
+  this->_next_index = 0;
+}
 
 PhoneBook::~PhoneBook() {}
 
@@ -45,13 +49,19 @@ void PhoneBook::AddContact() {
 }
 
 void PhoneBook::addContact(Contact contact) {
-  if (_size == _max_size) {
-    for (int i = _max_size - 1; i > 0; i--) _contacts[i] = _contacts[i - 1];
-    _contacts[0] = contact;
-  } else {
-    _contacts[_size] = contact;
-    _size++;
-  }
+  _contacts[_next_index] = contact;
+  _next_index++;
+  if (_next_index == 8)
+    _next_index = 0;
+  if (++_size > 8)
+    _size = 8;
+  // if (_size == _max_size) {
+  //   for (int i = _max_size - 1; i > 0; i--) _contacts[i] = _contacts[i - 1];
+  //   _contacts[0] = contact;
+  // } else {
+  //   _contacts[_size] = contact;
+  //   _size++;
+  // }
 }
 
 static std::string input_request(std::string field) {
@@ -64,9 +74,9 @@ static std::string input_request(std::string field) {
 }
 
 void PhoneBook::Search() {
-  int i = 0;
+  int         i = 0;
   std::string input;
-  Contact c;
+  Contact     c;
 
   if (_size == 0) {
     pause("No contact found");
@@ -77,7 +87,8 @@ void PhoneBook::Search() {
     print_contact_columns(_contacts[i], i + 1);
   }
   std::cout << "Please choose contact number" << std::endl;
-  std::cin >> input;
+  std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+  std::getline(std::cin, input);
   std::istringstream(input) >> i;
   if (i > _size || i < 1) {
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
@@ -100,7 +111,7 @@ static void print_header_columns() {
 
 static void print_contact_columns(Contact c, int i) {
   std::stringstream ss;
-  std::string index;
+  std::string       index;
 
   ss << i;
   ss >> index;
