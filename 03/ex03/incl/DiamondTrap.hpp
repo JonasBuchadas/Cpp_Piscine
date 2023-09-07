@@ -14,12 +14,22 @@ class DiamondTrap : public ScavTrap, public FragTrap {
 
  public:
   DiamondTrap(std::string name);
+  DiamondTrap(const DiamondTrap &src);
   ~DiamondTrap();
+  DiamondTrap &operator=(const DiamondTrap &src);
   void whoAmI();
   using FragTrap::defaultAttackDamage;
   using FragTrap::defaultHitPoints;
   using ScavTrap::attack;
   using ScavTrap::defaultEnergyPoints;
+//   using ClapTrap::getName;
+//   using ClapTrap::getHitPoints;
+//   using ClapTrap::getAttackDamage;
+//   using ClapTrap::getEnergyPoints;
+//   using ClapTrap::setHitPoints;
+//   using ClapTrap::setAttackDamage;
+//   using ClapTrap::setEnergyPoints;
+//   using ClapTrap::setEnergyPoints;
 };
 
 #endif

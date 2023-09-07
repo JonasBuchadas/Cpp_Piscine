@@ -12,11 +12,14 @@ class FragTrap : virtual public ClapTrap {
   FragTrap();
   FragTrap(std::string name);
   ~FragTrap();
+  FragTrap(const FragTrap &src);
+
   static int defaultHitPoints(void);
   static int defaultAttackDamage(void);
   static int defaultEnergyPoints(void);
-  void       attack(const std::string &target);
-  void       highFivesGuys(void);
+
+  FragTrap &operator=(const FragTrap &src);
+  void      highFivesGuys(void);
 };
 
 #endif

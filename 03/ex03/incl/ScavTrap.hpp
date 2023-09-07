@@ -12,11 +12,14 @@ class ScavTrap : virtual public ClapTrap {
   ScavTrap();
   ScavTrap(std::string name);
   ~ScavTrap();
+  ScavTrap(const ScavTrap &src);
+
   static int defaultHitPoints(void);
   static int defaultAttackDamage(void);
   static int defaultEnergyPoints(void);
-  void       attack(const std::string &target);
-  void       guardGate();
+
+  ScavTrap &operator=(const ScavTrap &src);
+  void      guardGate();
 };
 
 #endif
