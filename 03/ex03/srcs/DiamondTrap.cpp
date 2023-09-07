@@ -21,7 +21,8 @@ DiamondTrap &DiamondTrap::operator=(const DiamondTrap &src) {
   std::cout << "DiamondTrap Equal operator called" << std::endl;
   if (this == &src)
     return (*this);
-  this->name          = src.name;
+  this->_name          = src.name;
+  setName(name + "_clap_name");
   this->attack_damage = src.attack_damage;
   this->hit_points    = src.hit_points;
   this->energy_points = src.energy_points;
