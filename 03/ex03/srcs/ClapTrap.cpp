@@ -6,23 +6,27 @@ ClapTrap::ClapTrap() {
 
 ClapTrap::ClapTrap(std::string name) {
   std::cout << "ClapTrap Constructor called" << std::endl;
-  this->_name         = name;
-  this->attack_damage = defaultAttackDamage();
-  this->hit_points    = defaultHitPoints();
-  this->energy_points = defaultEnergyPoints();
+  this->name          = name;
+  this->attack_damage = 0;
+  this->hit_points    = 10;
+  this->energy_points = 10;
 }
+
+ClapTrap::ClapTrap(const ClapTrap &src) { *this = src; }
 
 ClapTrap::~ClapTrap() {
   std::cout << "ClapTrap Destructor called" << std::endl;
 }
 
-int ClapTrap::defaultHitPoints(void) { return (10); }
+ClapTrap &ClapTrap::operator=(const ClapTrap &src) {
+  this->name          = src.name;
+  this->attack_damage = src.attack_damage;
+  this->hit_points    = src.hit_points;
+  this->energy_points = src.energy_points;
+  return (*this);
+}
 
-int ClapTrap::defaultAttackDamage(void) { return (0); }
-
-int ClapTrap::defaultEnergyPoints(void) { return (10); }
-
-void ClapTrap::setName(std::string name) { this->_name = name; }
+void ClapTrap::setName(std::string name) { this->name = name; }
 
 void ClapTrap::setHitPoints(int ammount) { this->hit_points = ammount; }
 
@@ -30,7 +34,7 @@ void ClapTrap::setAttackDamage(int ammount) { this->attack_damage = ammount; }
 
 void ClapTrap::setEnergyPoints(int ammount) { this->energy_points = ammount; }
 
-std::string ClapTrap::getName(void) { return (this->_name); }
+std::string ClapTrap::getName(void) { return (this->name); }
 
 int ClapTrap::getHitPoints(void) { return (this->hit_points); }
 
@@ -43,7 +47,7 @@ void ClapTrap::attack(const std::string &target) {
     std::cout << "ClapTrap is unable to attack" << std::endl;
   else {
     this->energy_points--;
-    std::cout << "ClapTrap " << this->_name << " attacks " << target
+    std::cout << "ClapTrap " << this->name << " attacks " << target
               << ", causing " << this->attack_damage << " point of damage"
               << std::endl;
   }
@@ -54,13 +58,13 @@ void ClapTrap::beRepaired(unsigned int amount) {
     std::cout << "ClapTrap is unable to repair" << std::endl;
   else {
     this->energy_points--;
-    std::cout << "ClapTrap " << this->_name << " is repaired and receives "
+    std::cout << "ClapTrap " << this->name << " is repaired and receives "
               << amount << " hit points" << std::endl;
   }
 }
 
 void ClapTrap::takeDamage(unsigned int amount) {
   this->hit_points -= amount;
-  std::cout << "ClapTrap " << this->_name << " was attacked and loses "
-            << amount << " hit points" << std::endl;
+  std::cout << "ClapTrap " << this->name << " was attacked and loses " << amount
+            << " hit points" << std::endl;
 }

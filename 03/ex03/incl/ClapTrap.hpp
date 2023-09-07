@@ -2,8 +2,6 @@
 #ifndef __CLAPTRAP_HPP__
 #define __CLAPTRAP_HPP__
 
-#define getVarName(var) #var
-
 #include <iostream>
 
 class ClapTrap {
@@ -16,7 +14,10 @@ class ClapTrap {
  public:
   ClapTrap();
   ClapTrap(std::string name);
+  ClapTrap(const ClapTrap &src);
   ~ClapTrap();
+
+  ClapTrap   &operator=(const ClapTrap &src);
   void        setName(std::string name);
   void        setHitPoints(int ammout);
   void        setAttackDamage(int ammout);
@@ -28,9 +29,6 @@ class ClapTrap {
   void        attack(const std::string &target);
   void        takeDamage(unsigned int amount);
   void        beRepaired(unsigned int amount);
-  static int  defaultHitPoints(void);
-  static int  defaultAttackDamage(void);
-  static int  defaultEnergyPoints(void);
 };
 
 #endif

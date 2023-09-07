@@ -12,8 +12,24 @@ ClapTrap::ClapTrap(std::string name) {
   this->energy_points = 10;
 }
 
+ClapTrap::ClapTrap(const ClapTrap &src) {
+  std::cout << "ClapTrap Copy Constructor called" << std::endl;
+  *this = src;
+}
+
 ClapTrap::~ClapTrap() {
   std::cout << "ClapTrap Destructor called" << std::endl;
+}
+
+ClapTrap &ClapTrap::operator=(const ClapTrap &src) {
+  std::cout << "ClapTrap Equal operator called" << std::endl;
+  if (this == &src)
+    return (*this);
+  this->name          = src.name;
+  this->attack_damage = src.attack_damage;
+  this->hit_points    = src.hit_points;
+  this->energy_points = src.energy_points;
+  return (*this);
 }
 
 void ClapTrap::setName(std::string name) { this->name = name; }

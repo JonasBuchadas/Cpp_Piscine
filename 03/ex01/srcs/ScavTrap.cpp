@@ -8,8 +8,17 @@ ScavTrap::ScavTrap(std::string name) {
   setEnergyPoints(50);
 }
 
+ScavTrap::ScavTrap(const ScavTrap &src) { *this = src; }
+
 ScavTrap::~ScavTrap() {
   std::cout << "ScavTrap Destructor called" << std::endl;
+}
+
+ScavTrap &ScavTrap::operator=(const ScavTrap &src) {
+  if (this == &src)
+    return (*this);
+  setEnergyPoints(src.getEnergyPoints());
+  return (*this);
 }
 
 void ScavTrap::guardGate() {

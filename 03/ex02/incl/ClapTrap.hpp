@@ -14,7 +14,10 @@ class ClapTrap {
  public:
   ClapTrap();
   ClapTrap(std::string name);
+  ClapTrap(const ClapTrap &src);
   ~ClapTrap();
+
+  ClapTrap   &operator=(const ClapTrap &src);
   void        setName(std::string name);
   void        setHitPoints(int ammout);
   void        setAttackDamage(int ammout);
