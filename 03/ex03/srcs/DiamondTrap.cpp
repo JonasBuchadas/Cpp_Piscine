@@ -2,13 +2,14 @@
 
 DiamondTrap::DiamondTrap() : ClapTrap("_clap_name"), ScavTrap(), FragTrap() {
   std::cout << "Standard DiamondTrap Constructor called" << std::endl;
-  this->name          = "";
+  this->name = "";
   setHitPoints(defaultHitPoints());
   setAttackDamage(defaultAttackDamage());
   setEnergyPoints(defaultEnergyPoints());
 }
 
-DiamondTrap::DiamondTrap(std::string name) : ClapTrap(name + "_clap_name"), ScavTrap(), FragTrap() {
+DiamondTrap::DiamondTrap(std::string name)
+    : ClapTrap(name + "_clap_name"), ScavTrap(), FragTrap() {
   std::cout << "DiamondTrap Constructor called" << std::endl;
   this->_name = name;
   setHitPoints(defaultHitPoints());
@@ -16,7 +17,8 @@ DiamondTrap::DiamondTrap(std::string name) : ClapTrap(name + "_clap_name"), Scav
   setEnergyPoints(defaultEnergyPoints());
 }
 
-DiamondTrap::DiamondTrap(const DiamondTrap &src) : ClapTrap(), ScavTrap(), FragTrap() {
+DiamondTrap::DiamondTrap(const DiamondTrap &src)
+    : ClapTrap(), ScavTrap(), FragTrap() {
   std::cout << "DiamondTrap Copy Constructor called" << std::endl;
   *this = src;
 }
@@ -29,8 +31,8 @@ DiamondTrap &DiamondTrap::operator=(const DiamondTrap &src) {
   std::cout << "DiamondTrap Equal operator called" << std::endl;
   if (this == &src)
     return (*this);
-  this->_name          = src.name;
   setName(name + "_clap_name");
+  this->_name         = src.name;
   this->attack_damage = src.attack_damage;
   this->hit_points    = src.hit_points;
   this->energy_points = src.energy_points;
