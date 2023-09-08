@@ -2,6 +2,14 @@
 
 #include "ClapTrap.hpp"
 
+ScavTrap::ScavTrap() {
+  std::cout << "Standard ScavTrap Constructor called" << std::endl;
+  this->name          = "";
+  this->hit_points    = 100;
+  this->attack_damage = 20;
+  this->energy_points = 50;
+}
+
 ScavTrap::ScavTrap(std::string name) {
   std::cout << "ScavTrap Constructor called" << std::endl;
   this->name          = name;

@@ -13,6 +13,7 @@ class DiamondTrap : public ScavTrap, public FragTrap {
   std::string _name;
 
  public:
+  DiamondTrap();
   DiamondTrap(std::string name);
   DiamondTrap(const DiamondTrap &src);
   ~DiamondTrap();
@@ -22,14 +23,6 @@ class DiamondTrap : public ScavTrap, public FragTrap {
   using FragTrap::defaultHitPoints;
   using ScavTrap::attack;
   using ScavTrap::defaultEnergyPoints;
-//   using ClapTrap::getName;
-//   using ClapTrap::getHitPoints;
-//   using ClapTrap::getAttackDamage;
-//   using ClapTrap::getEnergyPoints;
-//   using ClapTrap::setHitPoints;
-//   using ClapTrap::setAttackDamage;
-//   using ClapTrap::setEnergyPoints;
-//   using ClapTrap::setEnergyPoints;
 };
 
 #endif
