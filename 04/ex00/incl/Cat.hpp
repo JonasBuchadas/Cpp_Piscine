@@ -1,4 +1,6 @@
 #pragma once
+#ifndef __CAT_HPP__
+#define __CAT_HPP__
 
 #include <iostream>
 
@@ -18,3 +20,5 @@ class Cat : public Animal {
   virtual void        makeSound() const;
   virtual std::string getType() const;
 };
+
+#endif
