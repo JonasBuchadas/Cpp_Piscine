@@ -1,4 +1,4 @@
-#include "ex01.hpp"
+#include "Ex01.hpp"
 
 int main(void) {
   Cat* d = new Cat();
@@ -7,8 +7,8 @@ int main(void) {
   Cat* d2 = new Cat();
   *d2     = *d1;
   std::cout << d->getType() << " got " << d->getBrain().getIdea(0) << std::endl;
-  std::cout << d->getType() << " got " << d1->getBrain().getIdea(0) << std::endl;
-  std::cout << d->getType() << " got " << d2->getBrain().getIdea(0) << std::endl;
+  std::cout << d1->getType() << " got " << d1->getBrain().getIdea(0) << std::endl;
+  std::cout << d2->getType() << " got " << d2->getBrain().getIdea(0) << std::endl;
 
   d2->getBrain().setIdea(0, "bad idea");
 

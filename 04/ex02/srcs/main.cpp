@@ -1,8 +1,8 @@
-#include "ex01.hpp"
+#include "Ex02.hpp"
 
 int main(void) {
   AAnimal* a = new Cat();
-  Cat* d = new Cat();
+  Cat*     d = new Cat();
   d->getBrain().setIdea(0, "smart idea");
   Cat* d1 = new Cat(*d);
   Cat* d2 = d1;

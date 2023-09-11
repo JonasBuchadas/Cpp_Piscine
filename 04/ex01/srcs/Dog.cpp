@@ -6,10 +6,12 @@ Dog::Dog() : type("Dog") {
 }
 
 Dog::Dog(const Dog &d) : Animal(d) {
-  //   this->type = d.type;
+  this->type = d.type;
+  std::cout << this->type << " copy constructor called" << std::endl;
   if (d.brain)
     this->brain = new Brain(*d.brain);
-  std::cout << this->type << " copy constructor called" << std::endl;
+  else
+    this->brain = NULL;
 }
 
 Dog &Dog::operator=(const Dog &d) {
@@ -17,14 +19,12 @@ Dog &Dog::operator=(const Dog &d) {
   if (this == &d)
     return *this;
   Animal::operator=(d);
-  //   this->type = d.type;
   if (this->brain)
     delete this->brain;
   if (d.brain)
     this->brain = new Brain(*d.brain);
   else
     this->brain = NULL;
-  //   *brain     = *d.brain;
   return *this;
 }
 

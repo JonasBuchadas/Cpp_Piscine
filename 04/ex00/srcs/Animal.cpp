@@ -8,7 +8,7 @@ Animal::~Animal() {
   std::cout << this->type << " default destructor called" << std::endl;
 }
 
-Animal::Animal(const Animal &src) {
+Animal::Animal(const Animal &src) : type(src.type) {
   std::cout << this->type << " copy constructor called" << std::endl;
   *this = src;
 }

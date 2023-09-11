@@ -47,7 +47,7 @@ $(OBJS_PATH)%.o: $(SRCS_PATH)%.cpp
 	@$(CC) $(CFLAGS) $(INC) -c $< -o $@
 
 ### ACTIVE RULES ###
-all: $(NAME) ## compiles binaty with mandatory requirements
+all: $(NAME) ## compiles binary with mandatory requirements
 
 help:  ## show this help
 	@echo "usage: make [target]"
