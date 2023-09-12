@@ -5,26 +5,24 @@ Dog::Dog() : type("Dog") {
   this->brain = new Brain();
 }
 
-Dog::Dog(const Dog &d) : Animal(d) {
-  this->type = d.type;
+Dog::Dog(const Dog &src) : Animal(src) {
+  if (src.brain)
+    this->brain = new Brain();
+  *this = src;
   std::cout << this->type << " copy constructor called" << std::endl;
-  if (d.brain)
-    this->brain = new Brain(*d.brain);
-  else
-    this->brain = NULL;
 }
 
-Dog &Dog::operator=(const Dog &d) {
-  std::cout << this->type << " = operator overload called" << std::endl;
-  if (this == &d)
+Dog &Dog::operator=(const Dog &src) {
+  if (this == &src)
     return *this;
-  Animal::operator=(d);
+  this->type = src.type;
   if (this->brain)
     delete this->brain;
-  if (d.brain)
-    this->brain = new Brain(*d.brain);
+  if (src.brain)
+    this->brain = new Brain(*src.brain);
   else
     this->brain = NULL;
+  std::cout << this->type << " = operator overload called" << std::endl;
   return *this;
 }
 

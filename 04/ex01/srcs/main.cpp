@@ -10,11 +10,11 @@ int main(void) {
   std::cout << d1->getType() << " got " << d1->getBrain().getIdea(0) << std::endl;
   std::cout << d2->getType() << " got " << d2->getBrain().getIdea(0) << std::endl;
 
-  d2->getBrain().setIdea(0, "bad idea");
+  d1->getBrain().setIdea(0, "bad idea");
 
   std::cout << d->getType() << " got " << d->getBrain().getIdea(0) << std::endl;
-  std::cout << d->getType() << " got " << d1->getBrain().getIdea(0) << std::endl;
-  std::cout << d->getType() << " got " << d2->getBrain().getIdea(0) << std::endl;
+  std::cout << d1->getType() << " got " << d1->getBrain().getIdea(0) << std::endl;
+  std::cout << d2->getType() << " got " << d2->getBrain().getIdea(0) << std::endl;
   delete d;
   delete d1;
   delete d2;

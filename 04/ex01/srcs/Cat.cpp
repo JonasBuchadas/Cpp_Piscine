@@ -5,26 +5,24 @@ Cat::Cat() : type("Cat") {
   this->brain = new Brain();
 }
 
-Cat::Cat(const Cat &c) : Animal(c) {
-  this->type = c.type;
+Cat::Cat(const Cat &src) : Animal(src) {
+  if (src.brain)
+    this->brain = new Brain();
+  *this = src;
   std::cout << this->type << " copy constructor called" << std::endl;
-  if (c.brain)
-    this->brain = new Brain(*c.brain);
-  else
-    this->brain = NULL;
 }
 
-Cat &Cat::operator=(const Cat &c) {
-  std::cout << this->type << " = operator overload called" << std::endl;
-  if (this == &c)
+Cat &Cat::operator=(const Cat &src) {
+  if (this == &src)
     return *this;
-  Animal::operator=(c);
+  this->type = src.type;
   if (this->brain)
     delete this->brain;
-  if (c.brain)
-    this->brain = new Brain(*c.brain);
+  if (src.brain)
+    this->brain = new Brain(*src.brain);
   else
     this->brain = NULL;
+  std::cout << this->type << " = operator overload called" << std::endl;
   return *this;
 }
 
