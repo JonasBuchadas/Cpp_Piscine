@@ -1,4 +1,6 @@
 #pragma once
+#ifndef __CAT_HPP__
+#define __CAT_HPP__
 
 #include <iostream>
 
@@ -9,18 +11,16 @@ class Cat : public AAnimal {
  private:
   Brain* brain;
 
- protected:
-  std::string type;
-
  public:
   Cat();
-  Cat(const Cat& c);
   virtual ~Cat();
 
-  Cat& operator=(const Cat& c);
+  Cat(const Cat& src);
 
-  std::string getType();
-  Brain& getBrain();
-
-  void makeSound() const;
+  Cat&                operator=(const Cat& src);
+  virtual void        makeSound() const;
+  virtual std::string getType() const;
+  Brain&              getBrain();
 };
+
+#endif

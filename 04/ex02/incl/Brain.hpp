@@ -1,4 +1,6 @@
 #pragma once
+#ifndef __BRAIN_HPP__
+#define __BRAIN_HPP__
 
 #include <iostream>
 #define BRAINSIZE 100
@@ -12,8 +14,11 @@ class Brain {
   Brain();
   Brain(const Brain& b);
   ~Brain();
+
   Brain& operator=(const Brain& b);
 
-  void setIdea(int index, const std::string& idea);
+  void        setIdea(int index, const std::string& idea);
   std::string getIdea(int index);
 };
+
+#endif
