@@ -11,12 +11,10 @@ class Cat : public Animal {
  private:
   Brain* brain;
 
- protected:
-  std::string type;
-
  public:
   Cat();
   virtual ~Cat();
+
   Cat(const Cat& src);
 
   Cat&                operator=(const Cat& src);
