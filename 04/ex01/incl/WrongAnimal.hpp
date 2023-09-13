@@ -10,6 +10,6 @@ class WrongAnimal {
  public:
   WrongAnimal();
   ~WrongAnimal();
-  void makeSound() const;
+  void        makeSound() const;
   std::string getType() const;
 };
