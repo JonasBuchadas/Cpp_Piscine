@@ -2,8 +2,13 @@
 
 AMateria::AMateria(std::string &type) : type(type) {
   this->equipped = false;
-  this->usages = 0;
+  this->usages   = 0;
   std::cout << this->type << " default constructor called" << std::endl;
+}
+
+AMateria::AMateria(const AMateria &src) : type(src.type) {
+  std::cout << "Materia copy destructor called" << std::endl;
+  *this = src;
 }
 
 AMateria::~AMateria() {
@@ -18,12 +23,13 @@ bool AMateria::getEquipped() { return this->equipped; }
 
 void AMateria::setEquipped(bool equip) { this->equipped = equip; }
 
-AMateria &AMateria::operator=(AMateria &src) {
-  if (this != &src) {
-    this->equipped = false;
-    this->usages = src.usages;
-    this->type = src.type;
+AMateria &AMateria::operator=(const AMateria &src) {
+  if (this == &src) {
+    return (*this);
   }
+  this->equipped = false;
+  this->usages   = src.usages;
+  this->type     = src.type;
   return (*this);
 }
 

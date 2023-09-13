@@ -1,20 +1,15 @@
 #include <Character.hpp>
 
 Character::Character(std::string name) : name(name) {
-  for (int i = 0; i < inventory_size; i++) this->inventory[i] = NULL;
+  for (int i = 0; i < inventory_size; i++)
+    this->inventory[i] = NULL;
   std::cout << "Character with name: " << this->name
             << " default constructor called" << std::endl;
 }
 
 Character::Character(const Character& src) {
-  for (int i = 0; i < inventory_size; i++) {
-    this->inventory[i] = NULL;
-    if (src.inventory[i] != NULL)
-      this->inventory[i] = src.inventory[i]->clone();
-  }
-  this->name = src.name;
-  std::cout << "Character with name: " << this->name
-            << " copy constructor called" << std::endl;
+  *this = src;
+  std::cout << "Character with name: " << this->name << " copy constructor called" << std::endl;
 }
 
 Character::~Character() {
@@ -25,7 +20,8 @@ Character::~Character() {
 
 Character& Character::operator=(const Character& src) {
   std::cout << "Character copy operator overload called" << std::endl;
-  if (this == &src) return *this;
+  if (this == &src)
+    return *this;
   deleteAllEquippedMaterias();
   for (int i = 0; i < inventory_size; i++) {
     if (src.inventory[i] != NULL)

@@ -7,25 +7,25 @@ class ICharacter;
 
 class AMateria {
  private:
-  int usages;
+  int  usages;
   bool equipped;
 
  protected:
   std::string& type;
 
  public:
-  // AMateria();
   AMateria(std::string& type);
-  AMateria(AMateria& src);
+  AMateria(const AMateria& src);
   virtual ~AMateria();
 
-  AMateria& operator=(AMateria& src);
+  AMateria& operator=(const AMateria& src);
 
   std::string const& getType() const;
-  int getUsages();
+
+  int  getUsages();
   bool getEquipped();
   void setEquipped(bool equip);
 
   virtual AMateria* clone() const = 0;
-  virtual void use(ICharacter& target);
+  virtual void      use(ICharacter& target);
 };

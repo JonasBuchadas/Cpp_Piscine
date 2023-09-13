@@ -14,7 +14,10 @@ Ice::Ice(const Ice &i) : AMateria(_type) {
 }
 
 Ice &Ice::operator=(const Ice &i) {
-  if (this != &i) this->AMateria::operator=((AMateria &)i);
+  if (this == &i) {
+    return (*this);
+  }
+  AMateria::operator=(i);
   std::cout << this->type << " equal operator overload called" << std::endl;
   return *this;
 }

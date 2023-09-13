@@ -14,9 +14,12 @@ Cure::Cure(const Cure &i) : AMateria(_type) {
 }
 
 Cure &Cure::operator=(const Cure &i) {
-  if (this != &i) this->AMateria::operator=((AMateria &)i);
+  if (this == &i) {
+    return (*this);
+  }
+  AMateria::operator=(i);
   std::cout << this->type << " equal operator overload called" << std::endl;
-  return *this;
+  return (*this);
 }
 
 AMateria *Cure::clone() const { return (new Cure(*this)); }

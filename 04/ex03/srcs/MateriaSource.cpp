@@ -2,7 +2,8 @@
 
 MateriaSource::MateriaSource() {
   std::cout << "MateriaSource default constructor called" << std::endl;
-  for (int i = 0; i < this->materia_size; i++) this->inventory[i] = NULL;
+  for (int i = 0; i < this->materia_size; i++)
+    this->inventory[i] = NULL;
 }
 
 MateriaSource::~MateriaSource() {
@@ -13,6 +14,17 @@ MateriaSource::~MateriaSource() {
       this->inventory[i] = NULL;
     }
   }
+}
+
+MateriaSource::MateriaSource(const MateriaSource& src) {
+  *this = src;
+  std::cout << "MateriaSource copy constructor called" << std::endl;
+}
+
+MateriaSource& MateriaSource::operator=(const MateriaSource& src) {
+  for (int i = 0; i < this->materia_size; i++)
+    this->inventory[i] = src.inventory[i];
+  std::cout << "MateriaSource equal operator overload called" << std::endl;
 }
 
 void MateriaSource::learnMateria(AMateria* m) {
