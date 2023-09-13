@@ -32,8 +32,6 @@ Dog::~Dog() {
   delete this->brain;
 }
 
-std::string Dog::getType() const { return this->type; }
-
 Brain &Dog::getBrain() { return *this->brain; }
 
 void Dog::makeSound() const { std::cout << "Woof" << std::endl; }

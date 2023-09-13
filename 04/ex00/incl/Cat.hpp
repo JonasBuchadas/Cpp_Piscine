@@ -18,7 +18,6 @@ class Cat : public Animal {
 
   Cat                &operator=(const Cat &src);
   virtual void        makeSound() const;
-  virtual std::string getType() const;
 };
 
 #endif

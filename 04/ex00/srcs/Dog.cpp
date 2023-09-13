@@ -22,5 +22,3 @@ Dog &Dog::operator=(const Dog &src) {
 }
 
 void Dog::makeSound() const { std::cout << "Woof" << std::endl; }
-
-std::string Dog::getType() const { return type; }

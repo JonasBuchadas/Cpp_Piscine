@@ -1,21 +1,29 @@
 #include "Dog.hpp"
 
-Dog::Dog() : type("Dog") {
+Dog::Dog() {
+  this->type = "Dog";
   std::cout << this->type << " default constructor called" << std::endl;
   this->brain = new Brain();
 }
 
-Dog::Dog(const Dog &d) : AAnimal() {
-  this->type = d.type;
-  if (d.brain) this->brain = new Brain(*d.brain);
+Dog::Dog(const Dog &src) : AAnimal(src) {
+  if (src.brain)
+    this->brain = new Brain();
+  *this = src;
   std::cout << this->type << " copy constructor called" << std::endl;
 }
 
-Dog &Dog::operator=(const Dog &d) {
+Dog &Dog::operator=(const Dog &src) {
+  if (this == &src)
+    return *this;
+  AAnimal::operator=(src);
+  if (this->brain)
+    delete this->brain;
+  if (src.brain)
+    this->brain = new Brain(*src.brain);
+  else
+    this->brain = NULL;
   std::cout << this->type << " = operator overload called" << std::endl;
-  if (this == &d) return *this;
-  this->type = d.type;
-  this->brain = d.brain;
   return *this;
 }
 
@@ -23,8 +31,6 @@ Dog::~Dog() {
   std::cout << this->type << " default destructor called" << std::endl;
   delete this->brain;
 }
-
-std::string Dog::getType() { return this->type; }
 
 Brain &Dog::getBrain() { return *this->brain; }
 

@@ -22,5 +22,3 @@ Cat &Cat::operator=(const Cat &src) {
 }
 
 void Cat::makeSound() const { std::cout << "Meow" << std::endl; }
-
-std::string Cat::getType() const { return type; }

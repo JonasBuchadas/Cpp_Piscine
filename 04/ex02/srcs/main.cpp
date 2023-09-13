@@ -1,7 +1,6 @@
 #include "Ex02.hpp"
 
 int main(void) {
-  AAnimal* a = new Cat();
   Cat*     d = new Cat();
   d->getBrain().setIdea(0, "smart idea");
   Cat* d1 = new Cat(*d);
@@ -19,7 +18,6 @@ int main(void) {
             << std::endl;
   delete d;
   delete d1;
-  delete a;
   /*
           Brain* b1 = new Brain();
           b1->setIdea(0, "smart idea");
@@ -30,7 +28,7 @@ int main(void) {
           delete b1;
           delete b2;
 
-          const Animal* animals[SIZE];
+          const AAnimal* animals[SIZE];
           int i = -1;
           while (++i < (SIZE / 2))
                   animals[i] = new Dog();
@@ -41,7 +39,6 @@ int main(void) {
           i = -1;
           while (++i < SIZE)
                   delete animals[i];
-
-  */
+*/
   return 0;
 }

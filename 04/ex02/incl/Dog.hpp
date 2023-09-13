@@ -4,7 +4,7 @@
 
 #include <iostream>
 
-#include "Animal.hpp"
+#include "AAnimal.hpp"
 #include "Brain.hpp"
 
 class Dog : public AAnimal {
@@ -19,7 +19,6 @@ class Dog : public AAnimal {
 
   Dog&                operator=(const Dog& src);
   virtual void        makeSound() const;
-  virtual std::string getType() const;
   Brain&              getBrain();
 };
 

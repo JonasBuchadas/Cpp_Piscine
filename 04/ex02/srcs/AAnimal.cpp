@@ -18,3 +18,5 @@ AAnimal &AAnimal::operator=(const AAnimal &a) {
   std::cout << this->type << " = operator overload called" << std::endl;
   return *this;
 }
+
+std::string AAnimal::getType() const { return this->type; }
