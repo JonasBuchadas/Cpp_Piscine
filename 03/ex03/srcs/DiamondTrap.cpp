@@ -1,6 +1,6 @@
 #include "DiamondTrap.hpp"
 
-DiamondTrap::DiamondTrap() : ClapTrap("_clap_name"), ScavTrap(), FragTrap() {
+DiamondTrap::DiamondTrap() : ClapTrap("_clap_name"), ScavTrap("_clap_name"), FragTrap("_clap_name") {
   std::cout << "Standard DiamondTrap Constructor called" << std::endl;
   this->name = "";
   setHitPoints(defaultHitPoints());
@@ -8,17 +8,15 @@ DiamondTrap::DiamondTrap() : ClapTrap("_clap_name"), ScavTrap(), FragTrap() {
   setEnergyPoints(defaultEnergyPoints());
 }
 
-DiamondTrap::DiamondTrap(std::string name)
-    : ClapTrap(name + "_clap_name"), ScavTrap(), FragTrap() {
+DiamondTrap::DiamondTrap(std::string name) : ClapTrap(name + "_clap_name"), ScavTrap(name + "_clap_name"), FragTrap(name + "_clap_name") {
   std::cout << "DiamondTrap Constructor called" << std::endl;
-  this->_name = name;
+  this->name = name;
   setHitPoints(defaultHitPoints());
   setAttackDamage(defaultAttackDamage());
   setEnergyPoints(defaultEnergyPoints());
 }
 
-DiamondTrap::DiamondTrap(const DiamondTrap &src)
-    : ClapTrap(), ScavTrap(), FragTrap() {
+DiamondTrap::DiamondTrap(const DiamondTrap &src) : ClapTrap(), ScavTrap(), FragTrap() {
   std::cout << "DiamondTrap Copy Constructor called" << std::endl;
   *this = src;
 }
@@ -31,11 +29,8 @@ DiamondTrap &DiamondTrap::operator=(const DiamondTrap &src) {
   std::cout << "DiamondTrap Equal operator called" << std::endl;
   if (this == &src)
     return (*this);
-  setName(name + "_clap_name");
-  this->_name         = src.name;
-  this->attack_damage = src.attack_damage;
-  this->hit_points    = src.hit_points;
-  this->energy_points = src.energy_points;
+  this->name = src.name;
+  ClapTrap::operator=(src);
   return (*this);
 }
 
@@ -43,7 +38,7 @@ void DiamondTrap::whoAmI() {
   if (getEnergyPoints() <= 0 || getHitPoints() <= 0)
     std::cout << "DiamondTrap is unable to speak" << std::endl;
   else {
-    std::cout << "DiamondTrap name is :\t" << _name << std::endl;
+    std::cout << "DiamondTrap name is :\t" << name << std::endl;
     std::cout << "ClapTrap name is :\t" << getName() << std::endl;
   }
 }

@@ -31,10 +31,7 @@ FragTrap &FragTrap::operator=(const FragTrap &src) {
   std::cout << "FragTrap Equal operator called" << std::endl;
   if (this == &src)
     return (*this);
-  this->name          = src.name;
-  this->attack_damage = src.attack_damage;
-  this->hit_points    = src.hit_points;
-  this->energy_points = src.energy_points;
+  ClapTrap::operator=(src);
   return (*this);
 }
 
@@ -46,9 +43,9 @@ int FragTrap::defaultEnergyPoints(void) { return (100); }
 
 void FragTrap::highFivesGuys() {
   if (this->energy_points <= 0 || this->hit_points <= 0)
-    std::cout << "FragTrap is unable to high five guys" << std::endl;
+    std::cout << "FragTrap " << this->name << " is unable to high five guys" << std::endl;
   else {
     this->energy_points--;
-    std::cout << "FragTrap is now in high five mode" << std::endl;
+    std::cout << "FragTrap " << this->name << " is now in high five mode" << std::endl;
   }
 }

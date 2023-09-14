@@ -31,18 +31,15 @@ ScavTrap &ScavTrap::operator=(const ScavTrap &src) {
   std::cout << "ScavTrap Equal operator called" << std::endl;
   if (this == &src)
     return (*this);
-  this->name          = src.name;
-  this->hit_points    = src.hit_points;
-  this->attack_damage = src.attack_damage;
-  this->energy_points = src.energy_points;
+  ClapTrap::operator=(src);
   return (*this);
 }
 
 void ScavTrap::guardGate() {
   if (this->energy_points <= 0 || this->hit_points <= 0)
-    std::cout << "ScavTrap is unable to enter Gate keeper mode" << std::endl;
+    std::cout << "ScavTrap " << this->name << " is unable to enter Gate keeper mode" << std::endl;
   else {
     this->energy_points--;
-    std::cout << "ScavTrap is now in Gate keeper mode" << std::endl;
+    std::cout << "ScavTrap " << this->name << " is now in Gate keeper mode" << std::endl;
   }
 }
