@@ -13,6 +13,11 @@ int main() {
   ICharacter* bob = new Character("bob");
   me->use(0, *bob);
   me->use(1, *bob);
+  me->unequip(0);
+  AMateria* f1 = AMateria::floor[0];
+  bob->equip(f1);
+  me->equip(f1);
+  bob->use(0, *me);
   delete bob;
   delete me;
   delete src;

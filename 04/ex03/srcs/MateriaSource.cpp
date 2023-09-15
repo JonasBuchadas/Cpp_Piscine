@@ -22,9 +22,12 @@ MateriaSource::MateriaSource(const MateriaSource& src) {
 }
 
 MateriaSource& MateriaSource::operator=(const MateriaSource& src) {
+  if (this == &src)
+    return (*this);
   for (int i = 0; i < this->materia_size; i++)
     this->inventory[i] = src.inventory[i];
   std::cout << "MateriaSource equal operator overload called" << std::endl;
+  return (*this);
 }
 
 void MateriaSource::learnMateria(AMateria* m) {

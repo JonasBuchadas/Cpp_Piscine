@@ -1,5 +1,7 @@
 #include "AMateria.hpp"
 
+AMateria** AMateria::floor = NULL;
+
 AMateria::AMateria(std::string &type) : type(type) {
   this->equipped = false;
   this->usages   = 0;
@@ -29,8 +31,23 @@ AMateria &AMateria::operator=(const AMateria &src) {
   }
   this->equipped = false;
   this->usages   = src.usages;
-  this->type     = src.type;
   return (*this);
+}
+
+void AMateria::drop()
+{
+	AMateria **list;
+	int i = 0;
+	while (floor != NULL && floor[i] != NULL)
+		if (floor[i++] == this)
+			return ;
+	list = new AMateria*[i + 2];
+	list[i + 1] = NULL;
+	list[i] = this;
+	for (int j = 0; j < i; j++)
+		list[j] = floor[j];
+	delete (floor);
+	floor = list;
 }
 
 void AMateria::use(ICharacter &target) {

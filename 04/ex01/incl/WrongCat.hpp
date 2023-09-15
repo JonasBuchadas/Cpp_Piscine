@@ -1,4 +1,6 @@
 #pragma once
+#ifndef __WRONG_CAT_HPP__
+#define __WRONG_CAT_HPP__
 
 #include <iostream>
 
@@ -12,5 +14,10 @@ class WrongCat : public WrongAnimal {
  public:
   WrongCat();
   ~WrongCat();
-  void makeSound() const;
+  WrongCat(const WrongCat &src);
+
+  WrongCat &operator=(const WrongCat &src);
+  void      makeSound() const;
 };
+
+#endif

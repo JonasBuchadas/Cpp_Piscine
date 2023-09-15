@@ -14,6 +14,7 @@ class AMateria {
   std::string& type;
 
  public:
+  static AMateria** floor;
   AMateria(std::string& type);
   AMateria(const AMateria& src);
   virtual ~AMateria();
@@ -25,6 +26,7 @@ class AMateria {
   int  getUsages();
   bool getEquipped();
   void setEquipped(bool equip);
+  void drop();
 
   virtual AMateria* clone() const = 0;
   virtual void      use(ICharacter& target);
