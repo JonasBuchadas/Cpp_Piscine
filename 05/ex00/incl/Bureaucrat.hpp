@@ -1,4 +1,6 @@
 #pragma once
+#ifndef __BUREAUCRAT_HPP__
+#define __BUREAUCRAT_HPP__
 
 #include <iostream>
 
@@ -7,18 +9,21 @@ class Form;
 class Bureaucrat {
  private:
   std::string const name;
-  int grade;
+  int               grade;
 
  public:
   Bureaucrat(std::string const name, int grade) throw(std::exception);
+  Bureaucrat(const Bureaucrat &src);
   ~Bureaucrat();
 
-  std::string getName();
-  int getGrade();
-  void setGrade(int grade) throw(std::exception);
+  Bureaucrat &operator=(const Bureaucrat &src);
 
-  void incrementGrade() throw(std::exception);
-  void decrementGrade() throw(std::exception);
+  std::string getName();
+  int         getGrade();
+  void        setGrade(int grade) throw(std::exception);
+
+  void       incrementGrade() throw(std::exception);
+  void       decrementGrade() throw(std::exception);
   static int gradeControl(int grade) throw(std::exception);
 
   class GradeTooHighException : public std::exception {
@@ -37,3 +42,5 @@ class Bureaucrat {
 };
 
 std::ostream &operator<<(std::ostream &, Bureaucrat &);
+
+#endif

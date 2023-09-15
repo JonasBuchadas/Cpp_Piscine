@@ -1,11 +1,19 @@
 #include <Bureaucrat.hpp>
 
-Bureaucrat::Bureaucrat(std::string const name, int grade) throw(std::exception)
-    : name(name) {
+Bureaucrat::Bureaucrat(std::string const name, int grade) throw(std::exception) : name(name) {
   setGrade(grade);
 }
 
 Bureaucrat::~Bureaucrat() {}
+
+Bureaucrat::Bureaucrat(const Bureaucrat &src) {
+  *this = src;
+}
+
+Bureaucrat &Bureaucrat::operator=(const Bureaucrat &src) {
+  if (&this == src)
+    return (*this);
+}
 
 int Bureaucrat::getGrade() { return this->grade; }
 
@@ -16,8 +24,10 @@ void Bureaucrat::setGrade(int grade) throw(std::exception) {
 }
 
 int Bureaucrat::gradeControl(int grade) throw(std::exception) {
-  if (grade <= 0) throw Bureaucrat::GradeTooHighException();
-  if (grade > 150) throw Bureaucrat::GradeTooLowException();
+  if (grade <= 0)
+    throw Bureaucrat::GradeTooHighException();
+  if (grade > 150)
+    throw Bureaucrat::GradeTooLowException();
   return grade;
 }
 
