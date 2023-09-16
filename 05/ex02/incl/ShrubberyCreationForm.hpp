@@ -1,4 +1,7 @@
 #pragma once
+#ifndef __SHRUBBERYCREATIONFORM_HPP__
+#define __SHRUBBERYCREATIONFORM_HPP__
+
 #include <AForm.hpp>
 #include <fstream>
 
@@ -7,7 +10,13 @@ class ShrubberyCreationForm : public AForm {
   std::string target;
 
  public:
+  ShrubberyCreationForm();
   ShrubberyCreationForm(std::string target);
+  ShrubberyCreationForm(const ShrubberyCreationForm &src);
   ~ShrubberyCreationForm();
-  void execute(Bureaucrat const &executor) const throw(std::exception);
+
+  ShrubberyCreationForm &operator=(const ShrubberyCreationForm &src);
+  void                   execute(Bureaucrat const &executor) const throw(std::exception);
 };
+
+#endif

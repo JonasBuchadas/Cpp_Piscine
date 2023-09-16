@@ -1,4 +1,7 @@
 #pragma once
+#ifndef __ROBOTOMYREQUESTFORM_HPP__
+#define __ROBOTOMYREQUESTFORM_HPP__
+
 #include <stdlib.h>
 #include <time.h>
 
@@ -9,7 +12,13 @@ class RobotomyRequestForm : public AForm {
   std::string target;
 
  public:
+  RobotomyRequestForm();
   RobotomyRequestForm(std::string target);
+  RobotomyRequestForm(const RobotomyRequestForm &src);
   ~RobotomyRequestForm();
-  virtual void execute(Bureaucrat const &executor) const throw(std::exception);
+
+  RobotomyRequestForm &operator=(const RobotomyRequestForm &src);
+  void                 execute(Bureaucrat const &executor) const throw(std::exception);
 };
+
+#endif

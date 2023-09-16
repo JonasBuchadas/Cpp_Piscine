@@ -1,4 +1,4 @@
-#include "Form28b.hpp"
+#include "Ex02.hpp"
 
 int main(void) {
   try {
@@ -6,9 +6,9 @@ int main(void) {
     std::cout << j;
     j.incrementGrade();
     std::cout << j;
-    RobotomyRequestForm f("Jonas");
+    RobotomyRequestForm    f = RobotomyRequestForm("Jon");
     PresidentialPardonForm p("Sara");
-    ShrubberyCreationForm s("tree");
+    ShrubberyCreationForm  s("tree");
     f.beSigned(j);
     p.beSigned(j);
     s.beSigned(j);

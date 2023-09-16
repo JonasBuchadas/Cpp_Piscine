@@ -5,7 +5,7 @@ OS=			$(shell uname -s)
 NAME=		ex03
 
 ### COMPILATION ###
-CC=			g++
+CC=			c++
 CFLAGS=		-Wall -Werror -Wextra -g -std=c++98 -fsanitize=address
 
 ### PATHS ###
@@ -48,7 +48,7 @@ $(OBJS_PATH)%.o: $(SRCS_PATH)%.cpp
 	@$(CC) $(CFLAGS) $(INC) -c $< -o $@
 
 ### ACTIVE RULES ###
-all: $(NAME) ## compiles megaphone with mandatory requirements
+all: $(NAME) ## compiles binary with mandatory requirements
 
 help:  ## show this help
 	@echo "usage: make [target]"
@@ -73,7 +73,7 @@ fclean: clean ## removes object files and binary
 	@rm -f $(NAME)
 	@$(RED)$(NAME) Program removed$(DEFAULT)
 
-re: fclean all ## recompiles minishell
+re: fclean all ## recompiles binary
 
 ### PHONY RULE ###
 .PHONY:	all help bonus clean fclean re norm

@@ -1,5 +1,7 @@
 #include <Bureaucrat.hpp>
 
+Bureaucrat::Bureaucrat() : name("") {}
+
 Bureaucrat::Bureaucrat(std::string const name, int grade) throw(std::exception) : name(name) {
   setGrade(grade);
 }
@@ -11,8 +13,10 @@ Bureaucrat::Bureaucrat(const Bureaucrat &src) {
 }
 
 Bureaucrat &Bureaucrat::operator=(const Bureaucrat &src) {
-  if (&this == src)
+  if (this == &src)
     return (*this);
+  this->grade = src.grade;
+  return (*this);
 }
 
 int Bureaucrat::getGrade() { return this->grade; }
@@ -40,7 +44,6 @@ void Bureaucrat::incrementGrade() throw(std::exception) {
 }
 
 std::ostream &operator<<(std::ostream &out, Bureaucrat &b) {
-  out << b.getName() << " bureaucrat grade " << b.getGrade() << "."
-      << std::endl;
+  out << b.getName() << " bureaucrat grade " << b.getGrade() << "." << std::endl;
   return out;
 }

@@ -1,4 +1,6 @@
 #pragma once
+#ifndef __INTERN_HPP__
+#define __INTERN_HPP__
 
 #include <AForm.hpp>
 #include <iostream>
@@ -21,3 +23,4 @@ class Intern {
 };
 
 // const std::string Intern::enumForm[] = { "a", "b", "c" };
+#endif  // !__INTERN_HPP__
