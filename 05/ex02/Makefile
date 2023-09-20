@@ -2,7 +2,7 @@
 OS=			$(shell uname -s)
 
 ### EXECUTABLE ###
-NAME=		Form28b
+NAME=		Ex02
 
 ### COMPILATION ###
 CC=			c++

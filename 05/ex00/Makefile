@@ -2,7 +2,7 @@
 OS=			$(shell uname -s)
 
 ### EXECUTABLE ###
-NAME=		Bureaucrat
+NAME=		Ex00
 
 ### COMPILATION ###
 CC=			c++

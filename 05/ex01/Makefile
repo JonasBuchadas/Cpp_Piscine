@@ -2,7 +2,7 @@
 OS=			$(shell uname -s)
 
 ### EXECUTABLE ###
-NAME=		Maggots
+NAME=		Ex01
 
 ### COMPILATION ###
 CC=			c++

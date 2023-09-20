@@ -1,4 +1,6 @@
 #pragma once
+#ifndef __BASE_HPP__
+#define __BASE_HPP__
 
 #include <ctype.h>
 #include <stdio.h>
@@ -13,8 +15,10 @@ class Base {
 };
 
 Base* generate();
-void identify(Base* p);
-void identify(Base& p);
+void  identify(Base* p);
+void  identify(Base& p);
 Base* makeA();
 Base* makeB();
 Base* makeC();
+
+#endif
