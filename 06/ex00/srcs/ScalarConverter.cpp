@@ -1,12 +1,10 @@
 #include <ScalarConverter.hpp>
 
 void ScalarConverter::convert(char* str) {
-  char* end;
-  double d = strtod(str, &end);
-  const funcValPtr enumValFunc[] = {&isCastableToChar, &isCastableToInt,
-                                    &isCastableToFloat};
-  const funcPrintPtr enumPrintFunc[] = {&convertPrintChar, &convertPrintInt,
-                                        &convertPrintFloat};
+  char*              end;
+  double             d               = strtod(str, &end);
+  const funcValPtr   enumValFunc[]   = {&isCastableToChar, &isCastableToInt, &isCastableToFloat};
+  const funcPrintPtr enumPrintFunc[] = {&convertPrintChar, &convertPrintInt, &convertPrintFloat};
 
   d = convertMathConsts(d, str);
   for (int i = 0; i < 3; i++) {
@@ -19,9 +17,12 @@ void ScalarConverter::convert(char* str) {
 }
 
 double ScalarConverter::convertMathConsts(double d, char* str) {
-  if (strcmp(str, "inf") == 0 || strcmp(str, "inff") == 0) d = INFINITY;
-  if (strcmp(str, "-inf") == 0 || strcmp(str, "-inff") == 0) d = -INFINITY;
-  if (strcmp(str, "nan") == 0 || strcmp(str, "nanf") == 0) d = NAN;
+  if (strcmp(str, "inf") == 0 || strcmp(str, "inff") == 0)
+    d = INFINITY;
+  if (strcmp(str, "-inf") == 0 || strcmp(str, "-inff") == 0)
+    d = -INFINITY;
+  if (strcmp(str, "nan") == 0 || strcmp(str, "nanf") == 0)
+    d = NAN;
   return (d);
 }
 

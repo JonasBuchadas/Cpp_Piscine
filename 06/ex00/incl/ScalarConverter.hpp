@@ -1,4 +1,6 @@
 #pragma once
+#ifndef __SCALARCONVERTER_HPP__
+#define __SCALARCONVERTER_HPP__
 
 #include <math.h>
 #include <string.h>
@@ -13,12 +15,12 @@ class ScalarConverter {
   typedef void (*funcPrintPtr)(double d);
 
   static double convertMathConsts(double d, char* str);
-  static bool isCastableToChar(double d, char* end);
-  static bool isCastableToInt(double d, char* end);
-  static bool isCastableToFloat(double d, char* end);
-  static void convertPrintChar(double d);
-  static void convertPrintInt(double d);
-  static void convertPrintFloat(double d);
+  static bool   isCastableToChar(double d, char* end);
+  static bool   isCastableToInt(double d, char* end);
+  static bool   isCastableToFloat(double d, char* end);
+  static void   convertPrintChar(double d);
+  static void   convertPrintInt(double d);
+  static void   convertPrintFloat(double d);
 
   template <typename T>
   static void display(T n);
@@ -34,3 +36,5 @@ class ScalarConverter {
  public:
   static void convert(char* str);
 };
+
+#endif
