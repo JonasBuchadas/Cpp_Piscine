@@ -25,6 +25,7 @@ class AForm {
   int          getGradeToExecute();
   bool         isSigned();
   std::string  getName();
+  std::string  getName() const;
   void         beSigned(Bureaucrat &b) throw(std::exception);
   void         checkExecution(Bureaucrat const &b) const throw(std::exception);
   virtual void execute(Bureaucrat const &executor) const throw(std::exception) = 0;

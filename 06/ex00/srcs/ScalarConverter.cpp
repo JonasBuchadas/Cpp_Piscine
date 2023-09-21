@@ -1,5 +1,19 @@
 #include <ScalarConverter.hpp>
 
+ScalarConverter::ScalarConverter() {}
+
+ScalarConverter::ScalarConverter(const ScalarConverter& src) {
+  *this = src;
+}
+
+ScalarConverter::~ScalarConverter() {}
+
+ScalarConverter& ScalarConverter::operator=(const ScalarConverter& src) {
+  if (this == &src)
+    return *this;
+  return *this;
+}
+
 void ScalarConverter::convert(char* str) {
   char*              end;
   double             d               = strtod(str, &end);

@@ -34,7 +34,12 @@ class ScalarConverter {
   static void printDouble(T n);
 
  public:
-  static void convert(char* str);
+  ScalarConverter();
+  ScalarConverter(const ScalarConverter& src);
+  ~ScalarConverter();
+
+  ScalarConverter& operator=(const ScalarConverter& src);
+  static void      convert(char* str);
 };
 
 #endif

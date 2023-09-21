@@ -29,6 +29,8 @@ AForm &AForm::operator=(const AForm &src) {
 
 std::string AForm::getName() { return this->name; }
 
+std::string AForm::getName() const { return this->name; }
+
 int AForm::getGradeToSign() { return this->gradeToSign; }
 
 int AForm::getGradeToExecute() { return this->gradeToExecute; }

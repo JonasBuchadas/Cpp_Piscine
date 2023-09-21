@@ -10,8 +10,13 @@ struct Data {
 
 class Serializer {
  public:
-  static uintptr_t serialize(Data *ptr);
-  static Data     *deserialize(uintptr_t raw);
+  Serializer();
+  Serializer(const Serializer& src);
+  ~Serializer();
+
+  Serializer&      operator=(const Serializer& src);
+  static uintptr_t serialize(Data* ptr);
+  static Data*     deserialize(uintptr_t raw);
 };
 
 #endif
