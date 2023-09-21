@@ -11,12 +11,14 @@ int main(void) {
     RobotomyRequestForm    f("Jonas");
     PresidentialPardonForm p("Sara");
     ShrubberyCreationForm  s("tree");
+    if (d) {
+      j.executeForm(*d);
+    }
     f.beSigned(j);
     p.beSigned(j);
     s.beSigned(j);
     j.executeForm(f);
     j.executeForm(p);
-    // j.executeForm(s);
     delete d;
   } catch (const std::exception& e) {
     std::cout << e.what() << std::endl;

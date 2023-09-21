@@ -1,7 +1,8 @@
 #pragma once
+#ifndef __ARRAY_HPP__
+#define __ARRAY_HPP__
 
 #include <stdlib.h>
-
 #include <iostream>
 
 template <typename T>
@@ -25,3 +26,5 @@ class Array {
 };
 
 #include <Array.tpp>
+
+#endif

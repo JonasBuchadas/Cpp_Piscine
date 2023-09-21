@@ -1,4 +1,7 @@
 #pragma once
+#ifndef __ARRAY_TPP__
+#define __ARRAY_TPP__
+
 
 #include <Array.hpp>
 
@@ -34,3 +37,5 @@ Array<T>& Array<T>::operator=(Array<T>& src) const {
   for (unsigned int i = 0; i < _size; i++) _array[i] = src.array()[i];
   return this;
 }
+
+#endif
