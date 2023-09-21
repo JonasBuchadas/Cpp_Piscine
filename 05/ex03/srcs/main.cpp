@@ -6,11 +6,11 @@ int main(void) {
     std::cout << j;
     j.incrementGrade();
     std::cout << j;
-    Intern i = Intern();
-    AForm* d = i.makeForm("shrubbery creation", "shrubb");
-    RobotomyRequestForm f("Jonas");
+    Intern                 i = Intern();
+    AForm*                 d = i.makeForm("shrubbery creation", "shrubb");
+    RobotomyRequestForm    f("Jonas");
     PresidentialPardonForm p("Sara");
-    ShrubberyCreationForm s("tree");
+    ShrubberyCreationForm  s("tree");
     f.beSigned(j);
     p.beSigned(j);
     s.beSigned(j);
