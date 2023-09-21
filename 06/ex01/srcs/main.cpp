@@ -8,7 +8,8 @@ int main() {
   uintptr_t data = Serializer::serialize(selam);
   temp           = Serializer::deserialize(data);
 
-  std::cout << temp->rnd << std::endl
-            << data << std::endl;
+  std::cout << selam->rnd << std::endl;
+  std::cout << data << std::endl;
+  std::cout << temp->rnd << std::endl;
   delete selam;
 }

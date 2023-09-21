@@ -74,7 +74,8 @@ void ScalarConverter::printChar(T n) {
     std::cout << "impossible" << std::endl;
     return;
   }
-  char c = (char)n;
+  //   char c = (char)n;
+  char c = static_cast<char>(n);
   if (!isprint(c)) {
     std::cout << "non displayable" << std::endl;
     return;
@@ -90,7 +91,8 @@ void ScalarConverter::printInt(T n) {
     std::cout << "impossible" << std::endl;
     return;
   }
-  int i = (int)n;
+  //   int i = (int)n;
+  int i = static_cast<int>(n);
   std::cout << i << std::endl;
 }
 
@@ -103,7 +105,8 @@ void ScalarConverter::printFloat(T n) {
     std::cout << "impossible" << std::endl;
     return;
   }
-  float f = (float)n;
+  //   float f = (float)n;
+  float f = static_cast<float>(n);
   std::cout << std::fixed;
   std::cout << std::setprecision(1);
   std::cout << f << "f" << std::endl;
@@ -118,7 +121,8 @@ void ScalarConverter::printDouble(T n) {
     std::cout << "impossible" << std::endl;
     return;
   }
-  double d = (double)n;
+  //   double d = (double)n;
+  double d = static_cast<double>(n);
   std::cout << std::fixed;
   std::cout << std::setprecision(1);
   std::cout << d << std::endl;
