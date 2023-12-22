@@ -1,11 +1,13 @@
 #pragma once
+#ifndef __SPAN_HPP__
+#define __SPAN_HPP__
 
 #include <iostream>
 #include <vector>
 
 class Span {
  private:
-  unsigned int _size;
+  unsigned int     _size;
   std::vector<int> _array;
 
  public:
@@ -13,8 +15,8 @@ class Span {
   ~Span();
   void addNumber(int n) throw(std::exception);
   void addNumbers(std::vector<int> array) throw(std::exception);
-  int longestSpan() throw(std::exception);
-  int shortestSpan() throw(std::exception);
+  int  longestSpan() throw(std::exception);
+  int  shortestSpan() throw(std::exception);
 
   class MaxSize : public std::exception {
    public:
@@ -27,6 +29,4 @@ class Span {
   };
 };
 
-// void Span::addNumber(int n) throw (std::exception) {
-//
-// }
+#endif

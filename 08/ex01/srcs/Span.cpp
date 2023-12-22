@@ -31,7 +31,7 @@ int Span::shortestSpan() throw(std::exception) {
   if (_array.size() < 2)
     throw Span::NoSpan();
   std::sort(_array.begin(), _array.end());
-  int shortestSpan = longestSpan();
+  int                        shortestSpan = longestSpan();
   std::vector<int>::iterator it;
   for (it = _array.begin(); it != _array.end() - 1; ++it) {
     if ((*(it + 1) - *it) < shortestSpan)

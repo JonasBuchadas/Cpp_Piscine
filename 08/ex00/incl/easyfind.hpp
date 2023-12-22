@@ -1,4 +1,6 @@
 #pragma once
+#ifndef __EASY_FIND_HPP__
+#define __EASY_FIND_HPP__
 
 #include <algorithm>
 #include <deque>
@@ -17,3 +19,5 @@ void easyfind(T &container, int value) {
   else
     std::cout << "Not found." << std::endl;
 }
+
+#endif

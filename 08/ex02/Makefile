@@ -2,10 +2,10 @@
 OS=			$(shell uname -s)
 
 ### EXECUTABLE ###
-NAME=		Ex01
+NAME=		Ex02
 
 ### COMPILATION ###
-CC=			g++
+CC=			c++
 CFLAGS=		-Wall -Werror -Wextra -g -std=c++98 -fsanitize=address
 
 ### PATHS ###
@@ -14,8 +14,7 @@ SRCS_PATH=	srcs/
 OBJS_PATH=	objs/
 
 ### SOURCE FILES ###
-SRC_NAME=	main.cpp \
-					Span.cpp
+SRC_NAME=	main.cpp
 SRCS=
 SRCS_NAME=	$(addprefix $(SRCS_PATH), $(SRC_NAME) $(SRCS))
 ### OBJECT FILES ###
@@ -44,7 +43,7 @@ $(OBJS_PATH)%.o: $(SRCS_PATH)%.cpp
 	@$(CC) $(CFLAGS) $(INC) -c $< -o $@
 
 ### ACTIVE RULES ###
-all: $(NAME) ## compiles megaphone with mandatory requirements
+all: $(NAME) ## compiles program with mandatory requirements
 
 help:  ## show this help
 	@echo "usage: make [target]"
@@ -69,7 +68,7 @@ fclean: clean ## removes object files and binary
 	@rm -f $(NAME)
 	@$(RED)$(NAME) Program removed$(DEFAULT)
 
-re: fclean all ## recompiles minishell
+re: fclean all ## recompiles program
 
 ### PHONY RULE ###
 .PHONY:	all help bonus clean fclean re norm
