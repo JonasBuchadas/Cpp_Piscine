@@ -15,19 +15,19 @@ class AMateria {
 
  public:
   static AMateria** floor;
-  AMateria(std::string& type);
-  AMateria(const AMateria& src);
+  AMateria( std::string& type );
+  AMateria( const AMateria& src );
   virtual ~AMateria();
 
-  AMateria& operator=(const AMateria& src);
+  AMateria& operator=( const AMateria& src );
 
   std::string const& getType() const;
 
   int  getUsages();
   bool getEquipped();
-  void setEquipped(bool equip);
+  void setEquipped( bool equip );
   void drop();
 
   virtual AMateria* clone() const = 0;
-  virtual void      use(ICharacter& target);
+  virtual void      use( ICharacter& target );
 };

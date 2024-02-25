@@ -14,7 +14,7 @@ SRCS_PATH=	srcs/
 OBJS_PATH=	objs/
 
 ### SOURCE FILES ###
-SRC_NAME=	main.cpp
+SRC_NAME=	main3.cpp
 SRCS=
 SRCS_NAME=	$(addprefix $(SRCS_PATH), $(SRC_NAME) $(SRCS))
 ### OBJECT FILES ###

@@ -6,21 +6,21 @@ Cat::Cat() {
   this->brain = new Brain();
 }
 
-Cat::Cat(const Cat &src) : Animal(src) {
-  if (src.brain)
+Cat::Cat( const Cat &src ) : Animal( src ) {
+  if ( src.brain )
     this->brain = new Brain();
   *this = src;
   std::cout << this->type << " copy constructor called" << std::endl;
 }
 
-Cat &Cat::operator=(const Cat &src) {
-  if (this == &src)
+Cat &Cat::operator=( const Cat &src ) {
+  if ( this == &src )
     return *this;
-  Animal::operator=(src);
-  if (this->brain)
+  Animal::operator=( src );
+  if ( this->brain )
     delete this->brain;
-  if (src.brain)
-    this->brain = new Brain(*src.brain);
+  if ( src.brain )
+    this->brain = new Brain( *src.brain );
   else
     this->brain = NULL;
   std::cout << this->type << " = operator overload called" << std::endl;

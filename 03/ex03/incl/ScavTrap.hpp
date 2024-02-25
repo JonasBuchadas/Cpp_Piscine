@@ -10,15 +10,15 @@ class ScavTrap : virtual public ClapTrap {
  private:
  public:
   ScavTrap();
-  ScavTrap(std::string name);
+  ScavTrap( std::string name );
   ~ScavTrap();
-  ScavTrap(const ScavTrap &src);
+  ScavTrap( const ScavTrap &src );
 
-  static int defaultHitPoints(void);
-  static int defaultAttackDamage(void);
-  static int defaultEnergyPoints(void);
+  static int defaultHitPoints( void );
+  static int defaultAttackDamage( void );
+  static int defaultEnergyPoints( void );
 
-  ScavTrap &operator=(const ScavTrap &src);
+  ScavTrap &operator=( const ScavTrap &src );
   void      guardGate();
 };
 

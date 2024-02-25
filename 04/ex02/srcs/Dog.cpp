@@ -6,21 +6,21 @@ Dog::Dog() {
   this->brain = new Brain();
 }
 
-Dog::Dog(const Dog &src) : AAnimal(src) {
-  if (src.brain)
+Dog::Dog( const Dog &src ) : AAnimal( src ) {
+  if ( src.brain )
     this->brain = new Brain();
   *this = src;
   std::cout << this->type << " copy constructor called" << std::endl;
 }
 
-Dog &Dog::operator=(const Dog &src) {
-  if (this == &src)
+Dog &Dog::operator=( const Dog &src ) {
+  if ( this == &src )
     return *this;
-  AAnimal::operator=(src);
-  if (this->brain)
+  AAnimal::operator=( src );
+  if ( this->brain )
     delete this->brain;
-  if (src.brain)
-    this->brain = new Brain(*src.brain);
+  if ( src.brain )
+    this->brain = new Brain( *src.brain );
   else
     this->brain = NULL;
   std::cout << this->type << " = operator overload called" << std::endl;

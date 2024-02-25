@@ -13,12 +13,12 @@ class RobotomyRequestForm : public AForm {
 
  public:
   RobotomyRequestForm();
-  RobotomyRequestForm(std::string target);
-  RobotomyRequestForm(const RobotomyRequestForm &src);
+  RobotomyRequestForm( std::string target );
+  RobotomyRequestForm( const RobotomyRequestForm &src );
   ~RobotomyRequestForm();
 
-  RobotomyRequestForm &operator=(const RobotomyRequestForm &src);
-  void                 execute(Bureaucrat const &executor) const throw(std::exception);
+  RobotomyRequestForm &operator=( const RobotomyRequestForm &src );
+  void                 execute( Bureaucrat const &executor ) const throw( std::exception );
 };
 
 #endif

@@ -9,12 +9,12 @@ Harl::Harl() {
 
 Harl::~Harl() {}
 
-void Harl::complain(std::string level) {
-  std::string array[] = {"DEBUG", "INFO", "WARNING", "ERROR"};
+void Harl::complain( std::string level ) {
+  std::string array[] = { "DEBUG", "INFO", "WARNING", "ERROR" };
 
-  for (int i = 0; i < 4; i++)
-    if (array[i] == level)
-      (this->*funcs[i])();
+  for ( int i = 0; i < 4; i++ )
+    if ( array[i] == level )
+      ( this->*funcs[i] )();
   std::cout << std::endl;
 }
 

@@ -18,7 +18,7 @@ Account::Account() {
             << std::endl;
 }
 
-Account::Account(int initial_deposit) {
+Account::Account( int initial_deposit ) {
   _amount = initial_deposit;
   _totalAmount += initial_deposit;
   _nbDeposits    = 0;
@@ -36,7 +36,7 @@ Account::~Account() {
             << std::endl;
 }
 
-void Account::makeDeposit(int amount) {
+void Account::makeDeposit( int amount ) {
   int p_amount = _amount;
   _amount += amount;
   _totalAmount += amount;
@@ -48,8 +48,8 @@ void Account::makeDeposit(int amount) {
             << ";nb_deposits:" << _nbDeposits << std::endl;
 }
 
-bool Account::makeWithdrawal(int amount) {
-  if (amount > _amount) {
+bool Account::makeWithdrawal( int amount ) {
+  if ( amount > _amount ) {
     _displayTimestamp();
     std::cout << "index:" << _accountIndex << ";p_amount:" << _amount
               << ";withdrawal:refused" << std::endl;
@@ -71,9 +71,9 @@ void Account::_displayTimestamp() {
   time_t curr_time;
   char   date_string[18];
 
-  time(&curr_time);
+  time( &curr_time );
 
-  strftime(date_string, 18, "[%Y%m%d_%H%M%S]", localtime(&curr_time));
+  strftime( date_string, 18, "[%Y%m%d_%H%M%S]", localtime( &curr_time ) );
 
   std::cout << date_string << " ";
   return;

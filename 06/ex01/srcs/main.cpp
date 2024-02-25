@@ -5,8 +5,8 @@ int main() {
   Data *temp;
 
   selam->rnd     = 42;
-  uintptr_t data = Serializer::serialize(selam);
-  temp           = Serializer::deserialize(data);
+  uintptr_t data = Serializer::serialize( selam );
+  temp           = Serializer::deserialize( data );
 
   std::cout << selam->rnd << std::endl;
   std::cout << data << std::endl;

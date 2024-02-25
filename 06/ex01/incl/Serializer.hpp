@@ -9,14 +9,14 @@ struct Data {
 };
 
 class Serializer {
- public:
+ private:
   Serializer();
-  Serializer(const Serializer& src);
+  Serializer( const Serializer& src );
   ~Serializer();
 
-  Serializer&      operator=(const Serializer& src);
-  static uintptr_t serialize(Data* ptr);
-  static Data*     deserialize(uintptr_t raw);
+  Serializer&      operator=( const Serializer& src );
+  static uintptr_t serialize( Data* ptr );
+  static Data*     deserialize( uintptr_t raw );
 };
 
 #endif

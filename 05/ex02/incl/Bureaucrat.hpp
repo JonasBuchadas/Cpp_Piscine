@@ -14,20 +14,20 @@ class Bureaucrat {
 
  public:
   Bureaucrat();
-  Bureaucrat(std::string const name, int grade) throw(std::exception);
-  Bureaucrat(const Bureaucrat &src);
+  Bureaucrat( std::string const name, int grade ) throw( std::exception );
+  Bureaucrat( const Bureaucrat &src );
   ~Bureaucrat();
 
-  Bureaucrat &operator=(const Bureaucrat &src);
+  Bureaucrat &operator=( const Bureaucrat &src );
   std::string getName();
   int         getGrade();
   int         getGrade() const;
-  void        setGrade(int grade) throw(std::exception);
-  void        incrementGrade() throw(std::exception);
-  void        decrementGrade() throw(std::exception);
-  void        signForm(AForm &f);
-  void        executeForm(AForm const &form);
-  static int  gradeControl(int grade) throw(std::exception);
+  void        setGrade( int grade ) throw( std::exception );
+  void        incrementGrade() throw( std::exception );
+  void        decrementGrade() throw( std::exception );
+  void        signForm( AForm &f );
+  void        executeForm( AForm const &form );
+  static int  gradeControl( int grade ) throw( std::exception );
 
   class GradeTooHighException : public std::exception {
    public:
@@ -44,6 +44,6 @@ class Bureaucrat {
   };
 };
 
-std::ostream &operator<<(std::ostream &, Bureaucrat &);
+std::ostream &operator<<( std::ostream &, Bureaucrat & );
 
 #endif

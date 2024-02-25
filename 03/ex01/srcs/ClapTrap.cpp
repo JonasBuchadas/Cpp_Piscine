@@ -8,7 +8,7 @@ ClapTrap::ClapTrap() {
   this->energy_points = 10;
 }
 
-ClapTrap::ClapTrap(std::string name) {
+ClapTrap::ClapTrap( std::string name ) {
   std::cout << "ClapTrap Constructor called" << std::endl;
   this->name          = name;
   this->attack_damage = 0;
@@ -16,7 +16,7 @@ ClapTrap::ClapTrap(std::string name) {
   this->energy_points = 10;
 }
 
-ClapTrap::ClapTrap(const ClapTrap &src) {
+ClapTrap::ClapTrap( const ClapTrap &src ) {
   std::cout << "ClapTrap Copy Constructor called" << std::endl;
   *this = src;
 }
@@ -25,19 +25,19 @@ ClapTrap::~ClapTrap() {
   std::cout << "ClapTrap Destructor called" << std::endl;
 }
 
-ClapTrap &ClapTrap::operator=(const ClapTrap &src) {
+ClapTrap &ClapTrap::operator=( const ClapTrap &src ) {
   std::cout << "ClapTrap Equal operator called" << std::endl;
-  if (this == &src)
-    return (*this);
+  if ( this == &src )
+    return ( *this );
   this->name          = src.name;
   this->attack_damage = src.attack_damage;
   this->hit_points    = src.hit_points;
   this->energy_points = src.energy_points;
-  return (*this);
+  return ( *this );
 }
 
-void ClapTrap::attack(const std::string &target) {
-  if (this->energy_points <= 0 || this->hit_points <= 0)
+void ClapTrap::attack( const std::string &target ) {
+  if ( this->energy_points <= 0 || this->hit_points <= 0 )
     std::cout << "ClapTrap is unable to attack" << std::endl;
   else {
     this->energy_points--;
@@ -47,8 +47,8 @@ void ClapTrap::attack(const std::string &target) {
   }
 }
 
-void ClapTrap::beRepaired(unsigned int amount) {
-  if (this->energy_points <= 0 || this->hit_points <= 0)
+void ClapTrap::beRepaired( unsigned int amount ) {
+  if ( this->energy_points <= 0 || this->hit_points <= 0 )
     std::cout << "ClapTrap is unable to repair" << std::endl;
   else {
     this->energy_points--;
@@ -57,7 +57,7 @@ void ClapTrap::beRepaired(unsigned int amount) {
   }
 }
 
-void ClapTrap::takeDamage(unsigned int amount) {
+void ClapTrap::takeDamage( unsigned int amount ) {
   this->hit_points -= amount;
   std::cout << "ClapTrap " << this->name << " was attacked and loses " << amount
             << " hit points" << std::endl;

@@ -1,44 +1,47 @@
-#pragma once
-#ifndef __MUTATED_STACK_TPP
-#define __MUTATED_STACK_TPP
+// #pragma once
+// #ifndef __MUTATED_STACK_TPP
+// #define __MUTATED_STACK_TPP
 
-#include <MutatedStack.hpp>
+// #include <MutatedStack.hpp>
 
-template <typename T>
-MutatedStack<T>::MutatedStack() {}
+// template <typename T>
+// MutatedStack<T>::MutatedStack() {}
 
-template <typename T>
-MutatedStack<T>::~MutatedStack() {}
+// template <typename T>
+// MutatedStack<T>::~MutatedStack() {}
 
-template <typename T>
-void MutatedStack<T>::push(const T& n) {
-  this->_stack.push(n);
-}
+// template <typename T>
+// MutatedStack<T>::MutatedStack( const MutatedStack& src ) {}
 
-template <typename T>
-void MutatedStack<T>::pop() {
-  this->_stack.pop();
-}
+// template <typename T>
+// void MutatedStack<T>::push(const T& n) {
+//   this->_data.push(n);
+// }
 
-template <typename T>
-T& MutatedStack<T>::top() {
-  return this->_stack.top();
-}
+// template <typename T>
+// void MutatedStack<T>::pop() {
+//   this->_data.pop();
+// }
 
-template <typename T>
-size_t MutatedStack<T>::size() {
-  return this->_stack.size();
-}
+// template <typename T>
+// T& MutatedStack<T>::top() {
+//   return this->_data.top();
+// }
 
-template <typename T>
-bool MutatedStack<T>::empty() const {
-  return this->_stack.empty();
-}
+// template <typename T>
+// size_t MutatedStack<T>::size() {
+//   return this->_data.size();
+// }
 
-template <typename T>
-typename MutatedStack<T>::Iterator MutatedStack<T>::begin() const { return Iterator(*this); }
+// template <typename T>
+// bool MutatedStack<T>::empty() const {
+//   return this->_data.empty();
+// }
 
-template <typename T>
-typename MutatedStack<T>::Iterator MutatedStack<T>::end() const { return Iterator(MutatedStack()); }
+// template <typename T>
+// typename MutatedStack<T>::Iterator MutatedStack<T>::begin() const { return Iterator( *this ); }
 
-#endif
+// template <typename T>
+// typename MutatedStack<T>::Iterator MutatedStack<T>::end() const { return Iterator( MutatedStack() ); }
+
+// #endif

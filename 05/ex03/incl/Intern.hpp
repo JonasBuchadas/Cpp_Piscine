@@ -9,7 +9,7 @@
 #include "RobotomyRequestForm.hpp"
 #include "ShrubberyCreationForm.hpp"
 
-typedef AForm *(*funcPtr)(std::string target);
+typedef AForm *( *funcPtr )( std::string target );
 
 class AForm;
 
@@ -18,10 +18,10 @@ class Intern {
  public:
   Intern();
   ~Intern();
-  Intern(const Intern &src);
+  Intern( const Intern &src );
 
-  Intern &operator=(const Intern &src);
-  AForm  *makeForm(std::string form, std::string target);
+  Intern &operator=( const Intern &src );
+  AForm  *makeForm( std::string form, std::string target );
 };
 
 #endif

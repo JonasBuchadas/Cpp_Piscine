@@ -1,29 +1,29 @@
 #include <ShrubberyCreationForm.hpp>
 
-ShrubberyCreationForm::ShrubberyCreationForm() : AForm("Shrubbery Creation Form", 145, 137) {}
+ShrubberyCreationForm::ShrubberyCreationForm() : AForm( "Shrubbery Creation Form", 145, 137 ) {}
 
-ShrubberyCreationForm::ShrubberyCreationForm(std::string target) : AForm("Shrubbery Creation Form", 145, 137) {
+ShrubberyCreationForm::ShrubberyCreationForm( std::string target ) : AForm( "Shrubbery Creation Form", 145, 137 ) {
   this->target = target;
 }
 
-ShrubberyCreationForm ::ShrubberyCreationForm(const ShrubberyCreationForm& src) : AForm("Shrubbery Creation Form", 145, 137) {
+ShrubberyCreationForm ::ShrubberyCreationForm( const ShrubberyCreationForm& src ) : AForm( "Shrubbery Creation Form", 145, 137 ) {
   *this = src;
 }
 
 ShrubberyCreationForm::~ShrubberyCreationForm() {}
 
-ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationForm& src) {
-  if (this == &src)
-    return (*this);
-  AForm::operator=(src);
+ShrubberyCreationForm& ShrubberyCreationForm::operator=( const ShrubberyCreationForm& src ) {
+  if ( this == &src )
+    return ( *this );
+  AForm::operator=( src );
   this->target = src.target;
-  return (*this);
+  return ( *this );
 }
 
-void ShrubberyCreationForm::execute(Bureaucrat const& executor) const
-    throw(std::exception) {
-  AForm::checkExecution(executor);
-  std::ofstream file((this->target + "_shrubbery").c_str());
+void ShrubberyCreationForm::execute( Bureaucrat const& executor ) const
+    throw( std::exception ) {
+  AForm::checkExecution( executor );
+  std::ofstream file( ( this->target + "_shrubbery" ).c_str() );
   file << "                      ___" << std::endl;
   file << "                _,-'\"\"   \"\"\"\"`--." << std::endl;
   file << "             ,-'          __,,-- \\" << std::endl;

@@ -5,6 +5,6 @@
 #include <fstream>
 #include <iostream>
 
-void replace(std::string, std::string, std::string);
+void replace( std::string, std::string, std::string );
 
 #endif

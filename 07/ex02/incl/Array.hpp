@@ -3,21 +3,24 @@
 #define __ARRAY_HPP__
 
 #include <stdlib.h>
+
 #include <iostream>
 
 template <typename T>
 class Array {
  private:
-  T* _array;
+  T*           _array;
   unsigned int _size;
 
  public:
   Array();
-  Array(unsigned int n);
-  Array(const Array& src);
+  Array( unsigned int n );
+  Array( const Array& src );
   ~Array();
-  Array& operator=(Array& src) const;
-  T& operator[](unsigned int i) throw(std::exception);
+
+  Array&       operator=( Array& src );
+  T&           operator[]( unsigned int i ) throw( std::exception );
+  unsigned int size();
 
   class OutOfBounds : public std::exception {
    public:

@@ -34,12 +34,12 @@ int main() {
   MutatedStack<int> ms;
 
   // Push some elements onto the stack
-  ms.push(1);
-  ms.push(2);
-  ms.push(3);
+  ms.push( 1 );
+  ms.push( 2 );
+  ms.push( 3 );
 
   // Iterate over the stack using the iterator
-  for (MutatedStack<int>::Iterator it = ms.begin(); it != ms.end(); ++it) {
+  for ( MutatedStack<int>::iterator it = ms.begin(); it != ms.end(); ++it ) {
     std::cout << *it << " ";
   }
 

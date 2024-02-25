@@ -2,31 +2,31 @@
 
 static std::string ShowMenu();
 
-int main(void) {
+int main( void ) {
   PhoneBook   phonebook;
   std::string option;
 
-  system("clear");
-  while (true) {
+  system( "clear" );
+  while ( true ) {
     option = ShowMenu();
-    system("clear");
-    if (option.compare("ADD") == 0) {
+    system( "clear" );
+    if ( option.compare( "ADD" ) == 0 ) {
       phonebook.AddContact();
-      system("clear");
+      system( "clear" );
     }
-    if (option.compare("SEARCH") == 0) {
+    if ( option.compare( "SEARCH" ) == 0 ) {
       phonebook.Search();
-      system("clear");
+      system( "clear" );
     }
-    if (option.compare("EXIT") == 0) {
+    if ( option.compare( "EXIT" ) == 0 ) {
       std::cout << "Thank you for using my Awesome Phonebook" << std::endl;
-      system("sleep 2");
-      system("clear");
-      exit(0);
+      system( "sleep 2" );
+      system( "clear" );
+      exit( 0 );
     }
   }
 
-  return (0);
+  return ( 0 );
 }
 
 static std::string ShowMenu() {

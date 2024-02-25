@@ -11,13 +11,13 @@ class Point {
 
  public:
   Point();
-  Point(float x, float y);
-  Point(const Point &p);
+  Point( float x, float y );
+  Point( const Point &p );
   ~Point();
 
-  Point operator=(Point p);
+  Point operator=( Point p );
 
-  bool operator==(const Point &p) const;
+  bool operator==( const Point &p ) const;
 
   const Fixed get_x() const;
   const Fixed get_y() const;

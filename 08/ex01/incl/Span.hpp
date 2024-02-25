@@ -11,12 +11,12 @@ class Span {
   std::vector<int> _array;
 
  public:
-  Span(unsigned int size);
+  Span( unsigned int size );
   ~Span();
-  void addNumber(int n) throw(std::exception);
-  void addNumbers(std::vector<int> array) throw(std::exception);
-  int  longestSpan() throw(std::exception);
-  int  shortestSpan() throw(std::exception);
+  void addNumber( int n ) throw( std::exception );
+  void addNumbers( std::vector<int> array ) throw( std::exception );
+  int  longestSpan() throw( std::exception );
+  int  shortestSpan() throw( std::exception );
 
   class MaxSize : public std::exception {
    public:

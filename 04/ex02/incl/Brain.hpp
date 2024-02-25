@@ -12,13 +12,13 @@ class Brain {
  protected:
  public:
   Brain();
-  Brain(const Brain& b);
+  Brain( const Brain& b );
   ~Brain();
 
-  Brain& operator=(const Brain& b);
+  Brain& operator=( const Brain& b );
 
-  void        setIdea(int index, const std::string& idea);
-  std::string getIdea(int index);
+  void        setIdea( int index, const std::string& idea );
+  std::string getIdea( int index );
 };
 
 #endif

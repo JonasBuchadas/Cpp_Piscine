@@ -16,21 +16,21 @@ class AForm {
 
  public:
   AForm();
-  AForm(const std::string name, const int toSign, const int toExecute);
-  AForm(const AForm &src);
+  AForm( const std::string name, const int toSign, const int toExecute );
+  AForm( const AForm &src );
   virtual ~AForm();
 
-  AForm       &operator=(const AForm &src);
+  AForm       &operator=( const AForm &src );
   int          getGradeToSign();
   int          getGradeToExecute();
   bool         isSigned();
   std::string  getName();
   std::string  getName() const;
-  void         beSigned(Bureaucrat &b) throw(std::exception);
-  void         checkExecution(Bureaucrat const &b) const throw(std::exception);
-  virtual void execute(Bureaucrat const &executor) const throw(std::exception) = 0;
+  void         beSigned( Bureaucrat &b ) throw( std::exception );
+  void         checkExecution( Bureaucrat const &b ) const throw( std::exception );
+  virtual void execute( Bureaucrat const &executor ) const throw( std::exception ) = 0;
 
-  static int gradeControl(int grade) throw(std::exception);
+  static int gradeControl( int grade ) throw( std::exception );
 
   class GradeTooHighException : public std::exception {
    public:
@@ -50,6 +50,6 @@ class AForm {
   };
 };
 
-std::ostream &operator<<(std::ostream &, AForm &);
+std::ostream &operator<<( std::ostream &, AForm & );
 
 #endif
