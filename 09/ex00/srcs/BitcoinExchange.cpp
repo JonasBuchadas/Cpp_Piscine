@@ -3,27 +3,27 @@
 #include <algorithm>
 #include <fstream>
 
-BitcoinExchange::BitcoinExchange( void ) : _data( std::map<std::string, double>() ) {}
+BitcoinExchange::BitcoinExchange( void ) : _dataBase( std::map<std::string, double>() ) {}
 
 BitcoinExchange::BitcoinExchange( std::string& filename ) {
-  this->addData( filename );
+  this->addDatabase( filename );
 }
 
-BitcoinExchange::BitcoinExchange( const BitcoinExchange& copy ) {
-  *this = copy;
+BitcoinExchange::BitcoinExchange( const BitcoinExchange& src ) {
+  *this = src;
 }
 
 BitcoinExchange::~BitcoinExchange( void ) {}
 
-BitcoinExchange& BitcoinExchange::operator=( const BitcoinExchange& copy ) {
-  if ( this == &copy ) {
+BitcoinExchange& BitcoinExchange::operator=( const BitcoinExchange& src ) {
+  if ( this == &src ) {
     return ( *this );
   }
-  this->_data = copy._data;
+  this->_dataBase = src._dataBase;
   return ( *this );
 }
 
-void BitcoinExchange::addData( std::string& filename ) {
+void BitcoinExchange::addDatabase( std::string& filename ) {
   std::ifstream file( filename.c_str(), std::ifstream::in );
 
   if ( !file.is_open() ) {
@@ -37,7 +37,7 @@ void BitcoinExchange::addData( std::string& filename ) {
     std::string date  = line.substr( 0, line.find( ',' ) );
     std::string price = line.substr( line.find( ',' ) + 1 );
 
-    _data.insert( std::pair<std::string, double>( date, std::atof( price.c_str() ) ) );
+    _dataBase.insert( std::pair<std::string, double>( date, std::atof( price.c_str() ) ) );
   }
   file.close();
 }
@@ -57,8 +57,8 @@ void BitcoinExchange::readFile( std::string& filename ) {
       checkInput( line );
       std::string                             date   = line.substr( 0, line.find( '|' ) - 1 );
       double                                  numBtc = std::atof( line.substr( line.find( '|' ) + 1 ).c_str() );
-      std::map<std::string, double>::iterator iter   = _data.upper_bound( date );
-      if ( iter != _data.begin() )
+      std::map<std::string, double>::iterator iter   = _dataBase.upper_bound( date );
+      if ( iter != _dataBase.begin() )
         --iter;
       std::cout << iter->first << " => " << iter->second << " => " << numBtc * iter->second << std::endl;
     } catch ( std::exception& e ) {
