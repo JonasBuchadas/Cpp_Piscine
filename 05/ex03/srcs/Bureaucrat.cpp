@@ -49,11 +49,10 @@ void Bureaucrat::signForm( AForm &f ) {
   try {
     f.beSigned( *this );
   } catch ( const std::exception &e ) {
-    std::cout << "Bureaucrat " << this->name << " couldn't sign form "
-              << f.getName() << " because grade is lower." << std::endl;
+    std::cout << this->name << " couldn't sign " << f.getName() << " because " << e.what() << "." << std::endl;
     return;
   }
-  std::cout << "Bureaucrat " << this->name << " signed form " << f.getName() << std::endl;
+  std::cout << this->name << " signed " << f.getName() << std::endl;
 }
 
 void Bureaucrat::executeForm( AForm &f ) {

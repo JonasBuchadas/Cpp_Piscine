@@ -37,7 +37,7 @@ DEFAULT= \033[0m"
 
 ### IMPLICT RULES ###
 %.o: %.cpp
-	@$(CC) $(CFLAGS) $(INC) -c $< -o $@
+	$(CC) $(CFLAGS) $(INC) -c $< -o $@
 
 $(OBJS_PATH)%.o: $(SRCS_PATH)%.cpp
 	@$(CC) $(CFLAGS) $(INC) -c $< -o $@
