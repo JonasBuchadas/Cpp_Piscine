@@ -17,26 +17,25 @@ class ScalarConverter {
   ScalarConverter& operator=( const ScalarConverter& src );
 
   typedef bool ( *funcValPtr )( double d, char* end );
-  typedef void ( *funcPrintPtr )( double d );
+  typedef void ( *funcPrintPtr )( double d, bool b );
 
-  static double convertMathConsts( double d, char* str );
-  static bool   isCastableToChar( double d, char* end );
-  static bool   isCastableToInt( double d, char* end );
-  static bool   isCastableToFloat( double d, char* end );
-  static void   convertPrintChar( double d );
-  static void   convertPrintInt( double d );
-  static void   convertPrintFloat( double d );
+  static bool isCastableToChar( double d, char* end );
+  static bool isCastableToInt( double d, char* end );
+  static bool isCastableToFloat( double d, char* end );
+  static void convertPrintChar( double d, bool b );
+  static void convertPrintInt( double d, bool b );
+  static void convertPrintFloat( double d, bool b );
 
   template <typename T>
-  static void display( T n );
+  static void display( T n, bool b );
   template <typename T>
-  static void printChar( T n );
+  static void printChar( T n, bool b );
   template <typename T>
-  static void printInt( T n );
+  static void printInt( T n, bool b );
   template <typename T>
-  static void printFloat( T n );
+  static void printFloat( T n, bool b );
   template <typename T>
-  static void printDouble( T n );
+  static void printDouble( T n, bool b );
 
  public:
   static void convert( char* str );

@@ -17,27 +17,21 @@ ScalarConverter& ScalarConverter::operator=( const ScalarConverter& src ) {
 void ScalarConverter::convert( char* str ) {
   char*              end;
   double             d               = strtod( str, &end );
+  bool               failedConv      = false;
   const funcValPtr   enumValFunc[]   = { &isCastableToChar, &isCastableToInt, &isCastableToFloat };
   const funcPrintPtr enumPrintFunc[] = { &convertPrintChar, &convertPrintInt, &convertPrintFloat };
 
-  d = convertMathConsts( d, str );
+  if ( d == 0 && str[0] != 0 && str[0] != '0' && str[1] == 0 )
+    d = str[0];
+  if ( d == 0 && str[0] != 0 && str[0] != '0' )
+    failedConv = true;
   for ( int i = 0; i < 3; i++ ) {
     if ( enumValFunc[i]( d, end ) ) {
-      enumPrintFunc[i]( d );
+      enumPrintFunc[i]( d, failedConv );
       return;
     }
   }
-  display( d );
-}
-
-double ScalarConverter::convertMathConsts( double d, char* str ) {
-  if ( strcmp( str, "inf" ) == 0 || strcmp( str, "inff" ) == 0 )
-    d = INFINITY;
-  if ( strcmp( str, "-inf" ) == 0 || strcmp( str, "-inff" ) == 0 )
-    d = -INFINITY;
-  if ( strcmp( str, "nan" ) == 0 || strcmp( str, "nanf" ) == 0 )
-    d = NAN;
-  return ( d );
+  display( d, failedConv );
 }
 
 bool ScalarConverter::isCastableToChar( double d, char* end ) {
@@ -57,34 +51,35 @@ bool ScalarConverter::isCastableToFloat( double d, char* end ) {
            d < std::numeric_limits<float>::max() && end[0] == 'f' );
 }
 
-void ScalarConverter::convertPrintChar( double d ) {
+void ScalarConverter::convertPrintChar( double d, bool b ) {
   char c = d;
-  display( c );
+  display( c, b );
 }
 
-void ScalarConverter::convertPrintInt( double d ) {
+void ScalarConverter::convertPrintInt( double d, bool b ) {
   int i = d;
-  display( i );
+  display( i, b );
 }
 
-void ScalarConverter::convertPrintFloat( double d ) {
+void ScalarConverter::convertPrintFloat( double d, bool b ) {
   float f = d;
-  display( f );
+  display( f, b );
 }
 
 template <typename T>
-void ScalarConverter::display( T n ) {
-  printChar( n );
-  printInt( n );
-  printFloat( n );
-  printDouble( n );
+void ScalarConverter::display( T n, bool b ) {
+  printChar( n, b );
+  printInt( n, b );
+  printFloat( n, b );
+  printDouble( n, b );
 }
 
 template <typename T>
-void ScalarConverter::printChar( T n ) {
+void ScalarConverter::printChar( T n, bool b ) {
   std::cout << "char:\t";
-  if ( n < std::numeric_limits<char>::min() ||
-       n > std::numeric_limits<char>::max() || isnan( n ) ) {
+  if ( ( n < std::numeric_limits<char>::min() ||
+         n > std::numeric_limits<char>::max() || isnan( n ) ) ||
+       b ) {
     std::cout << "impossible" << std::endl;
     return;
   }
@@ -97,10 +92,11 @@ void ScalarConverter::printChar( T n ) {
 }
 
 template <typename T>
-void ScalarConverter::printInt( T n ) {
+void ScalarConverter::printInt( T n, bool b ) {
   std::cout << "int:\t";
-  if ( n < std::numeric_limits<int>::min() ||
-       n > std::numeric_limits<int>::max() || isnan( n ) ) {
+  if ( ( n < std::numeric_limits<int>::min() ||
+         n > std::numeric_limits<int>::max() || isnan( n ) ) ||
+       b ) {
     std::cout << "impossible" << std::endl;
     return;
   }
@@ -109,11 +105,12 @@ void ScalarConverter::printInt( T n ) {
 }
 
 template <typename T>
-void ScalarConverter::printFloat( T n ) {
+void ScalarConverter::printFloat( T n, bool b ) {
   std::cout << "float:\t";
-  if ( ( n < -std::numeric_limits<float>::max() ||
-         n > std::numeric_limits<float>::max() ) &&
-       !isinf( n ) ) {
+  if ( ( ( n < -std::numeric_limits<float>::max() ||
+           n > std::numeric_limits<float>::max() ) &&
+         !isinf( n ) ) ||
+       b ) {
     std::cout << "impossible" << std::endl;
     return;
   }
@@ -124,11 +121,12 @@ void ScalarConverter::printFloat( T n ) {
 }
 
 template <typename T>
-void ScalarConverter::printDouble( T n ) {
+void ScalarConverter::printDouble( T n, bool b ) {
   std::cout << "double:\t";
-  if ( ( n < -std::numeric_limits<double>::max() ||
-         n > std::numeric_limits<double>::max() ) &&
-       !isinf( n ) ) {
+  if ( ( ( n < -std::numeric_limits<double>::max() ||
+           n > std::numeric_limits<double>::max() ) &&
+         !isinf( n ) ) ||
+       b ) {
     std::cout << "impossible" << std::endl;
     return;
   }
