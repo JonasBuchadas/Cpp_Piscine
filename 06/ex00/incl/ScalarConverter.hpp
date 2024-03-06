@@ -25,6 +25,7 @@ class ScalarConverter {
   static void convertPrintChar( double d, bool b );
   static void convertPrintInt( double d, bool b );
   static void convertPrintFloat( double d, bool b );
+  static bool isFailedConversion(double d, char *end);
 
   template <typename T>
   static void display( T n, bool b );

@@ -21,10 +21,11 @@ void ScalarConverter::convert( char* str ) {
   const funcValPtr   enumValFunc[]   = { &isCastableToChar, &isCastableToInt, &isCastableToFloat };
   const funcPrintPtr enumPrintFunc[] = { &convertPrintChar, &convertPrintInt, &convertPrintFloat };
 
-  if ( d == 0 && str[0] != 0 && str[0] != '0' && str[1] == 0 )
+  failedConv = isFailedConversion(d, end);
+  if ( d == 0 && str[0] != 0 && str[0] != '0' && str[1] == 0 ) {
     d = str[0];
-  if ( d == 0 && str[0] != 0 && str[0] != '0' )
-    failedConv = true;
+    failedConv = false;
+  }
   for ( int i = 0; i < 3; i++ ) {
     if ( enumValFunc[i]( d, end ) ) {
       enumPrintFunc[i]( d, failedConv );
@@ -32,6 +33,18 @@ void ScalarConverter::convert( char* str ) {
     }
   }
   display( d, failedConv );
+}
+
+bool ScalarConverter::isFailedConversion(double d, char *end) {
+  if ( d == 0 && end[0] != 0 && end[0] != '0' )
+    return true;
+  if ( d == 0 && end[0] != 0 && end[0] == '0' )
+    return false;
+  if ( end[0] == 0 )
+    return false;
+  if ( end[0] == 'f' && end[1] == 0 )
+    return false;
+  return true;
 }
 
 bool ScalarConverter::isCastableToChar( double d, char* end ) {
