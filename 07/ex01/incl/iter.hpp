@@ -4,7 +4,7 @@
 
 #include <iostream>
 
-template <typename T, typename F >
+template <typename T, typename F>
 void iter( T *array, int len, F f ) {
   if ( array == NULL ) {
     return;
@@ -14,7 +14,7 @@ void iter( T *array, int len, F f ) {
 }
 
 template <typename T>
-void print( T &t ) {
+void print1( T &t ) {
   std::cout << t << std::endl;
 }
 
