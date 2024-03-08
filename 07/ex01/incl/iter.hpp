@@ -4,8 +4,8 @@
 
 #include <iostream>
 
-template <typename T>
-void iter( T *array, int len, void ( *f )( T const & ) ) {
+template <typename T, typename F >
+void iter( T *array, int len, F f ) {
   if ( array == NULL ) {
     return;
   }
