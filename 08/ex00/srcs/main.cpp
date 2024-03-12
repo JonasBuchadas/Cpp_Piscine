@@ -1,8 +1,10 @@
 #include "easyfind.hpp"
 
 int main( int ac, char **av ) {
-  if ( ac != 2 )
+  if ( ac != 2 ) {
+    std::cerr << "Incorrect number of arguments. Please use 1 argument" << std::endl;
     return EXIT_FAILURE;
+  }
 
   int arr[] = { 12, 21, 3, 42, 5, 666, 77, 81, 90, 10 };
 

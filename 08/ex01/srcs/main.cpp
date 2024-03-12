@@ -24,6 +24,6 @@ int main() {
     std::cout << sp2.longestSpan() << std::endl;
     return 0;
   } catch ( const std::exception& e ) {
-    std::cerr << e.what() << '\n';
+    std::cerr << e.what() << std::endl;
   }
 }
