@@ -39,13 +39,13 @@ RPNToken RPN::getRPNToken( char c ) {
   return NONE;
 }
 
-void RPN::performOperation( RPNToken operation ) {
+void RPN::performOperation( RPNToken operation ) throw( std::exception ) {
+  if ( _stack.size() < 2 )
+    throw RPN::NotEnoughNumbersException();
   int num1;
   int num2;
-
   num2 = _stack.top();
   _stack.pop();
-
   num1 = _stack.top();
   _stack.pop();
 
@@ -67,50 +67,30 @@ void RPN::performOperation( RPNToken operation ) {
   }
 }
 
-void RPN::calculate( std::string& input ) {
+void RPN::calculate( std::string& input ) throw( std::exception ) {
   RPNToken t;
   for ( size_t i = 0; i < input.size(); i++ ) {
     t = getRPNToken( input[i] );
     switch ( t ) {
+      case ADD:
+      case SUB:
+      case MULT:
+      case DIV:
+        performOperation( t );
+        break;
       case SPACE:
         break;
-
       case NUM:
         _stack.push( input[i] - '0' );
         break;
-
-      case ADD:
-        if ( _stack.size() < 2 )
-          throw std::runtime_error( "Error: not enough numbers to make operation." );
-        performOperation( t );
-        break;
-
-      case SUB:
-        if ( _stack.size() < 2 )
-          throw std::runtime_error( "Error: not enough numbers to make operation." );
-        performOperation( t );
-        break;
-
-      case MULT:
-        if ( _stack.size() < 2 )
-          throw std::runtime_error( "Error: not enough numbers to make operation." );
-        performOperation( t );
-        break;
-
-      case DIV:
-        if ( _stack.size() < 2 )
-          throw std::runtime_error( "Error: not enough numbers to make operation." );
-        performOperation( t );
-        break;
-
       case NONE:
-        throw std::runtime_error( "Error: found unknown operator/number." );
+        throw RPN::InvalidTokenException();
         break;
     }
   }
 
   if ( _stack.size() != 1 )
-    throw std::runtime_error( "Error: wrong number of operations given." );
+    throw RPN::InvalidNumberOperationsException();
 
   std::cout << _stack.top() << std::endl;
 }

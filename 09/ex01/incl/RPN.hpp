@@ -16,18 +16,38 @@ enum RPNToken {
 };
 
 class RPN {
+ private:
+  std::stack<int> _stack;
+
  public:
   RPN( void );
   ~RPN( void );
   RPN( const RPN& src );
-  RPN& operator=( const RPN& src );
-
+  RPN&     operator=( const RPN& src );
   RPNToken getRPNToken( char c );
-  void     performOperation( RPNToken operation );
-  void     calculate( std::string& input );
+  void     performOperation( RPNToken operation ) throw( std::exception );
+  void     calculate( std::string& input ) throw( std::exception );
 
- private:
-  std::stack<int> _stack;
+  class NotEnoughNumbersException : public std::exception {
+   public:
+    virtual const char* what() const throw() {
+      return "not enough numbers to make operation";
+    }
+  };
+
+  class InvalidTokenException : public std::exception {
+   public:
+    virtual const char* what() const throw() {
+      return "invalid operator/number";
+    }
+  };
+
+  class InvalidNumberOperationsException : public std::exception {
+   public:
+    virtual const char* what() const throw() {
+      return "invalid number of operations given";
+    }
+  };
 };
 
 #endif
