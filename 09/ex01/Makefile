@@ -2,7 +2,7 @@
 OS=			$(shell uname -s)
 
 ### EXECUTABLE ###
-NAME=		Ex01
+NAME=		RPN
 
 ### COMPILATION ###
 CC=			c++

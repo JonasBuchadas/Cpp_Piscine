@@ -59,8 +59,9 @@ void BitcoinExchange::readFile( std::string& filename ) {
   while ( std::getline( file, line ) ) {
     try {
       validateInput( line );
-      std::string                             date   = line.substr( 0, line.find( '|' ) - 1 );
-      double                                  numBtc = std::atof( line.substr( line.find( '|' ) + 1 ).c_str() );
+      std::string date   = line.substr( 0, line.find( '|' ) - 1 );
+      double      numBtc = std::atof( line.substr( line.find( '|' ) + 1 ).c_str() );
+
       std::map<std::string, double>::iterator iter;
       iter = _dataBase.find( date );
       if ( iter == _dataBase.end() ) {
@@ -91,7 +92,7 @@ void BitcoinExchange::validateInput( std::string& input ) throw( std::exception 
 
 void BitcoinExchange::validateDateFormat( std::string str ) throw( std::exception ) {
   std::string year  = str.substr( 0, str.find( '-' ) ).c_str();
-  std::string month = str.substr( str.find( '-' ) + 1, 2 ).c_str();  // TODO: Fix here
+  std::string month = str.substr( str.find( '-' ) + 1, 2 ).c_str();
   std::string day   = str.substr( str.find_last_of( '-' ) + 1 ).c_str();
   if ( year.size() != 4 || month.size() != 2 || day.size() != 3 )
     throw std::runtime_error( "bad date format => " + str );

@@ -2,7 +2,7 @@
 OS=			$(shell uname -s)
 
 ### EXECUTABLE ###
-NAME=		Ex02
+NAME=		PmergeMe
 
 ### COMPILATION ###
 CC=			c++
@@ -15,7 +15,7 @@ OBJS_PATH=	objs/
 
 ### SOURCE FILES ###
 SRC_NAME=	main.cpp
-SRCS= PMergeMe.cpp
+SRCS= PmergeMe.cpp
 SRCS_NAME=	$(addprefix $(SRCS_PATH), $(SRC_NAME) $(SRCS))
 ### OBJECT FILES ###
 OBJ_NAME=	$(SRC_NAME:.cpp=.o)

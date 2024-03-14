@@ -6,6 +6,13 @@
 
 PmergeMe::PmergeMe( void ) {}
 
+PmergeMe::PmergeMe( char** input ) {
+  for ( int i = 1; input[i]; i++ ) {
+    addToDeque( std::atoi( input[i] ) );
+    addToList( std::atoi( input[i] ) );
+  }
+}
+
 PmergeMe::PmergeMe( const PmergeMe& copy ) {
   *this = copy;
 }
@@ -64,11 +71,6 @@ void PmergeMe::sort( void ) {
 void PmergeMe::mergeInsertSortList( void ) {
   listIter iter = _list.begin();
 
-  if ( _list.size() == 1 ) {
-    _sortedList.push_front( *iter );
-    return;
-  }
-
   for ( ; iter != _list.end(); ) {
     int key = *iter;
     ++iter;
@@ -113,11 +115,6 @@ void PmergeMe::insertList( void ) {
 
 void PmergeMe::mergeInsertSortDeque( void ) {
   dequeIter iter = _deque.begin();
-
-  if ( _deque.size() == 1 ) {
-    _sortedDeque.push_front( *iter );
-    return;
-  }
 
   for ( ; iter != _deque.end(); ) {
     int key = *iter;

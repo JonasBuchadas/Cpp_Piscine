@@ -9,22 +9,21 @@ class BitcoinExchange {
   std::map<std::string, double> _dataBase;
   BitcoinExchange( void );
 
- public:
-  BitcoinExchange( std::string& filename );
-  BitcoinExchange( const BitcoinExchange& copy );
-
-  ~BitcoinExchange( void );
-
-  BitcoinExchange& operator=( const BitcoinExchange& copy );
-
   void addDatabase( std::string& filename );
-  void readFile( std::string& filename );
   void validateInput( std::string& input ) throw( std::exception );
   void validateDateFormat( std::string str ) throw( std::exception );
   void validateDate( std::string date ) throw( std::exception );
   bool isLeapYear( unsigned int year );
   void validateValue( std::string price ) throw( std::exception );
   void onlyDigits( const char* str ) throw( std::exception );
+
+ public:
+  BitcoinExchange( std::string& filename );
+  BitcoinExchange( const BitcoinExchange& copy );
+  ~BitcoinExchange( void );
+  BitcoinExchange& operator=( const BitcoinExchange& copy );
+
+  void readFile( std::string& filename );
 
   class FailFileOpenException : public std::exception {
    public:

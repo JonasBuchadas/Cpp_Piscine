@@ -60,6 +60,8 @@ void RPN::performOperation( RPNToken operation ) throw( std::exception ) {
       _stack.push( num1 * num2 );
       break;
     case DIV:
+      if ( num2 == 0 )
+        throw RPN::DivideByZeroException();
       _stack.push( num1 / num2 );
       break;
     default:
@@ -68,6 +70,8 @@ void RPN::performOperation( RPNToken operation ) throw( std::exception ) {
 }
 
 void RPN::calculate( std::string& input ) throw( std::exception ) {
+  bool space = true;
+
   RPNToken t;
   for ( size_t i = 0; i < input.size(); i++ ) {
     t = getRPNToken( input[i] );
@@ -76,11 +80,14 @@ void RPN::calculate( std::string& input ) throw( std::exception ) {
       case SUB:
       case MULT:
       case DIV:
+        checkSpace( space );
         performOperation( t );
         break;
       case SPACE:
+        space = true;
         break;
       case NUM:
+        checkSpace( space );
         _stack.push( input[i] - '0' );
         break;
       case NONE:
@@ -93,4 +100,10 @@ void RPN::calculate( std::string& input ) throw( std::exception ) {
     throw RPN::InvalidNumberOperationsException();
 
   std::cout << _stack.top() << std::endl;
+}
+
+void RPN::checkSpace( bool& space ) throw( std::exception ) {
+  if ( !space )
+    throw RPN::NoSpaceBetweenTokensException();
+  space = false;
 }
