@@ -27,7 +27,7 @@ void BitcoinExchange::addDatabase( std::string& filename ) {
   std::ifstream file( filename.c_str(), std::ifstream::in );
 
   if ( !file.is_open() ) {
-    std::cout << "Error: could not open file" << std::endl;
+    throw BitcoinExchange::FailFileOpenException();
     return;
   }
 
@@ -46,51 +46,128 @@ void BitcoinExchange::readFile( std::string& filename ) {
   std::ifstream file( filename.c_str(), std::ifstream::in );
 
   if ( !file.is_open() ) {
-    std::cout << "Error: could not open file" << std::endl;
+    throw BitcoinExchange::FailFileOpenException();
     return;
   }
 
   std::string line;
   std::getline( file, line );
+  if ( !( line == "date | value" ) ) {
+    file.close();
+    throw BitcoinExchange::IncorrectFirstLineException();
+  }
   while ( std::getline( file, line ) ) {
     try {
-      checkInput( line );
+      validateInput( line );
       std::string                             date   = line.substr( 0, line.find( '|' ) - 1 );
       double                                  numBtc = std::atof( line.substr( line.find( '|' ) + 1 ).c_str() );
-      std::map<std::string, double>::iterator iter   = _dataBase.upper_bound( date );
-      if ( iter != _dataBase.begin() )
-        --iter;
-      std::cout << iter->first << " => " << iter->second << " => " << numBtc * iter->second << std::endl;
+      std::map<std::string, double>::iterator iter;
+      iter = _dataBase.find( date );
+      if ( iter == _dataBase.end() ) {
+        iter = _dataBase.lower_bound( date );
+        if ( iter != _dataBase.begin() )
+          --iter;
+      }
+      std::cout << date << " => " << numBtc << " = " << numBtc * iter->second << std::endl;
     } catch ( std::exception& e ) {
-      std::cout << e.what() << std::endl;
+      std::cout << "Error: " << e.what() << std::endl;
     }
   }
   file.close();
 }
 
-void BitcoinExchange::checkInput( std::string& input ) {
+void BitcoinExchange::validateInput( std::string& input ) throw( std::exception ) {
   std::string check;
-
   if ( input.find( '|' ) == std::string::npos ) {
-    throw std::runtime_error( "Error: bad input => " + input );
+    throw std::runtime_error( "bad input => " + input );
   }
 
   check = input.substr( 0, input.find( '|' ) );
-  if ( std::atof( check.substr( 5, 2 ).c_str() ) > 12 ) {
-    throw std::runtime_error( "Error: invalid input: month bigger than 12." );
-  }
+  validateDate( check );
 
-  check = input.substr( 8, 2 );
-  if ( std::atof( check.c_str() ) > 31 ) {
-    throw std::runtime_error( "Error: invalid input: day bigger than 31." );
-  }
+  std::string price = input.substr( input.find( '|' ) + 1 ).c_str();
+  validateValue( price );
+}
 
-  double price = std::atof( input.substr( input.find( '|' ) + 1 ).c_str() );
+void BitcoinExchange::validateDateFormat( std::string str ) throw( std::exception ) {
+  std::string year  = str.substr( 0, str.find( '-' ) ).c_str();
+  std::string month = str.substr( str.find( '-' ) + 1, 2 ).c_str();  // TODO: Fix here
+  std::string day   = str.substr( str.find_last_of( '-' ) + 1 ).c_str();
+  if ( year.size() != 4 || month.size() != 2 || day.size() != 3 )
+    throw std::runtime_error( "bad date format => " + str );
+  struct tm   time;
+  const char* cstr = str.c_str();
+  if ( !strptime( cstr, "%Y-%m-%d", &time ) )
+    throw std::runtime_error( "bad date format => " + str );
+}
+
+void BitcoinExchange::validateDate( std::string date ) throw( std::exception ) {
+  validateDateFormat( date );
+  int year  = atoi( date.substr( 0, date.find( '-' ) ).c_str() );
+  int month = atoi( date.substr( date.find( '-' ) + 1, date.find( '-' ) ).c_str() );
+  int day   = atoi( date.substr( date.find_last_of( '-' ) + 1 ).c_str() );
+  if ( year < 2009 || year > 2024 )
+    throw std::runtime_error( "invalid year input, out of range => " + date );
+  if ( month == 2 && day == 29 && isLeapYear( year ) )
+    return;
+  switch ( month ) {
+    case 1:
+    case 3:
+    case 5:
+    case 7:
+    case 8:
+    case 10:
+    case 12: {
+      if ( day <= 31 )
+        return;
+    } break;
+    case 4:
+    case 6:
+    case 9:
+    case 11: {
+      if ( day <= 30 )
+        return;
+    } break;
+    case 2: {
+      if ( day <= 28 )
+        return;
+    } break;
+  }
+  throw std::runtime_error( "invalid date input => " + date );
+}
+
+void BitcoinExchange::validateValue( std::string str ) throw( std::exception ) {
+  const char* cstr  = str.c_str();
+  double      price = atof( cstr );
   if ( price < 0 ) {
-    throw std::runtime_error( "Error: not a positive number." );
+    throw BitcoinExchange::NotPositiveNumberException();
   }
-
   if ( price > 1000 ) {
-    throw std::runtime_error( "Error: too large a number." );
+    throw BitcoinExchange::TooLargeNumberException();
+  }
+  if ( str.find( '.' ) != str.find_last_of( '.' ) )
+    throw std::runtime_error( "invalid value input, multiple decimal separators found => " + str );
+  if ( str.find( '.' ) == std::string::npos ) {
+    onlyDigits( str.substr( 1 ).c_str() );
+  } else {
+    onlyDigits( str.substr( 1, str.find( '.' ) - 1 ).c_str() );
+    onlyDigits( str.substr( str.find( '.' ) + 1 ).c_str() );
+  }
+}
+
+bool BitcoinExchange::isLeapYear( unsigned int year ) {
+  if ( year % 400 == 0 )
+    return 1;
+  else if ( year % 100 == 0 )
+    return 0;
+  else if ( year % 4 == 0 )
+    return 1;
+  return 0;
+}
+
+void BitcoinExchange::onlyDigits( const char* str ) throw( std::exception ) {
+  for ( int i = 0; str[i]; i++ ) {
+    if ( !std::isdigit( str[i] ) )
+      throw std::runtime_error( "invalid value input, invalid characters found => " + (std::string)str );
   }
 }

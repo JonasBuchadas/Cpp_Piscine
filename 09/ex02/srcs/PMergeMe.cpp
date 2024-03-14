@@ -25,13 +25,13 @@ PmergeMe& PmergeMe::operator=( const PmergeMe& src ) {
 
 void PmergeMe::addToList( int value ) {
   if ( std::find( _list.begin(), _list.end(), value ) != _list.end() )
-    throw std::runtime_error( "Error: given duplicate value" );
+    throw PmergeMe::DuplicateValueException();
   _list.push_back( value );
 }
 
 void PmergeMe::addToDeque( int value ) {
   if ( std::find( _deque.begin(), _deque.end(), value ) != _deque.end() )
-    throw std::runtime_error( "Error: given duplicate value" );
+    throw PmergeMe::DuplicateValueException();
   _deque.push_back( value );
 }
 
