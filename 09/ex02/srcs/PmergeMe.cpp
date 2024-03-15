@@ -16,7 +16,6 @@ PmergeMe::PmergeMe( char** input ) {
     if ( numb < 0 || numb > 2147483647 )
       throw std::out_of_range( "number negative or overflow" );
     addToDeque( numb );
-    addToList( numb );
     addToVector( numb );
   }
 }
@@ -31,17 +30,11 @@ PmergeMe& PmergeMe::operator=( const PmergeMe& src ) {
   if ( this == &src ) {
     return ( *this );
   }
-  _list        = src._list;
-  _sortedList  = src._sortedList;
-  _deque       = src._deque;
-  _sortedDeque = src._sortedDeque;
+  _vector       = src._vector;
+  _sortedVector = src._sortedVector;
+  _deque        = src._deque;
+  _sortedDeque  = src._sortedDeque;
   return ( *this );
-}
-
-void PmergeMe::addToList( int value ) {
-  if ( std::find( _list.begin(), _list.end(), value ) != _list.end() )
-    throw PmergeMe::DuplicateValueException();
-  _list.push_back( value );
 }
 
 void PmergeMe::addToDeque( int value ) {
@@ -58,13 +51,9 @@ void PmergeMe::addToVector( int value ) {
 
 void PmergeMe::sort( void ) {
   std::cout << "Before: ";
-  for ( listIter iter = _list.begin(); iter != _list.end(); ++iter )
+  for ( vectorIter iter = _vector.begin(); iter != _vector.end(); ++iter )
     std::cout << *iter << " ";
   std::cout << std::endl;
-
-  _listTime = clock();
-  mergeInsertSortList();
-  _listTime = clock() - _listTime;
 
   _dequeTime = clock();
   mergeInsertSortDeque();
@@ -75,75 +64,15 @@ void PmergeMe::sort( void ) {
   _vectorTime = clock() - _vectorTime;
 
   std::cout << "After: ";
-  for ( listIter iter = _sortedList.begin(); iter != _sortedList.end(); ++iter )
-    std::cout << *iter << " ";
-  std::cout << std::endl;
-
-  std::cout << "After: ";
-  for ( dequeIter iter = _sortedDeque.begin(); iter != _sortedDeque.end(); ++iter )
-    std::cout << *iter << " ";
-  std::cout << std::endl;
-
-  std::cout << "After: ";
   for ( vectorIter iter = _sortedVector.begin(); iter != _sortedVector.end(); ++iter )
     std::cout << *iter << " ";
   std::cout << std::endl;
 
-  std::cout << "Time to process a range of " << _list.size() << " elements with std::list : ";
-  std::cout << (double)( (double)_listTime / CLOCKS_PER_SEC ) * 1000 << " miliseconds " << std::endl;
-
   std::cout << "Time to process a range of " << _deque.size() << " elements with std::deque : ";
   std::cout << (double)( (double)_dequeTime / CLOCKS_PER_SEC ) * 1000 << " miliseconds " << std::endl;
 
-  std::cout << "Time to process a range of " << _deque.size() << " elements with std::vector : ";
+  std::cout << "Time to process a range of " << _vector.size() << " elements with std::vector : ";
   std::cout << (double)( (double)_vectorTime / CLOCKS_PER_SEC ) * 1000 << " miliseconds " << std::endl;
-}
-
-void PmergeMe::mergeInsertSortList( void ) {
-  listIter iter = _list.begin();
-
-  for ( ; iter != _list.end(); ) {
-    int key = *iter;
-    ++iter;
-
-    if ( iter != _list.end() ) {
-      if ( *iter > key )
-        _listPair.push_back( std::make_pair( key, *iter ) );
-      else
-        _listPair.push_back( std::make_pair( *iter, key ) );
-      ++iter;
-    }
-  }
-  // std::cout << "before pair sort" << std::endl;
-  // printListPair( _listPair );
-  recursiveSortList( _listPair, 0 );
-  // std::cout << "after pair sort" << std::endl;
-  // printListPair( _listPair );
-
-  insertList();
-}
-
-void PmergeMe::insertList( void ) {
-  std::list<std::pair<int, int> >::iterator iter = _listPair.begin();
-
-  for ( ; iter != _listPair.end(); ++iter ) {
-    _sortedList.push_back( iter->first );
-  }
-
-  iter = _listPair.begin();
-  for ( ; iter != _listPair.end(); ++iter ) {
-    listIter iter2 = _sortedList.begin();
-    while ( iter2 != _sortedList.end() && *iter2 < iter->second )
-      ++iter2;
-    _sortedList.insert( iter2, iter->second );
-  }
-  if ( _list.size() % 2 != 0 ) {
-    int      lastNumber = *( --_list.end() );
-    listIter iter       = _sortedList.begin();
-    while ( iter != _sortedList.end() && *iter < lastNumber )
-      ++iter;
-    _sortedList.insert( iter, lastNumber );
-  }
 }
 
 void PmergeMe::mergeInsertSortDeque( void ) {
@@ -178,11 +107,7 @@ void PmergeMe::mergeInsertSortVector( void ) {
       ++iter;
     }
   }
-  // std::cout << "before pair sort" << std::endl;
-  // printVectorPair( _vectorPair );
   recursiveSortVector( _vectorPair, 0 );
-  // std::cout << "after pair sort" << std::endl;
-  // printVectorPair( _vectorPair );
   insertVector();
 }
 
@@ -228,23 +153,6 @@ void PmergeMe::insertVector( void ) {
       ++iter;
     _sortedVector.insert( iter, _vector[_vector.size() - 1] );
   }
-}
-
-void PmergeMe::recursiveSortList( std::list<std::pair<int, int> >& listPairs, size_t size ) {
-  if ( size == listPairs.size() )
-    return;
-  std::list<std::pair<int, int> >::iterator it = _listPair.begin();
-
-  std::list<std::pair<int, int> >::iterator ite = _listPair.begin();
-  for ( size_t i = 0; i < size; i++ ) {
-    ite++;
-  }
-  for ( ; it != ite; it++ ) {
-    if ( it->first > ite->first ) {
-      std::swap( *it, *ite );
-    }
-  }
-  recursiveSortList( listPairs, ++size );
 }
 
 void PmergeMe::recursiveSortDeque( std::deque<std::pair<int, int> >& dequePairs, size_t size ) {
